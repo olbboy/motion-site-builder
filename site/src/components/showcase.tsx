@@ -40,6 +40,10 @@ const ITEMS: Item[] = [
   { id: 'praxis', title: 'Praxis', tagline: 'Developer documentation', profile: 'editorial', prompt: 'praxis-docs-page.md', url: 'https://praxis-docu-shine.lovable.app/' },
   { id: 'bloop', title: 'Bloop', tagline: 'Analog synth plugin', profile: 'playful', prompt: 'bloop-synth-plugin.md', url: 'https://bloop-neon-groove.lovable.app/' },
   { id: 'glyphery', title: 'Glyphery', tagline: 'Digital type foundry', profile: 'ecommerce', prompt: 'glyphery-type-foundry-shop.md', url: 'https://glyphery-type-shop.lovable.app/' },
+  { id: 'kinh-tuyen', title: 'Kinh Tuyến', tagline: 'Regenerative landscape studio', profile: 'cinematic', prompt: 'kinh-tuyen-rice-river-landing.md', url: 'https://water-field-rise.lovable.app/' },
+  { id: 'karstline', title: 'Karstline', tagline: 'Ninh Bình dawn retreat', profile: 'cinematic', prompt: 'karstline-ninh-binh-retreat.md', url: 'https://dawn-paddle-dream.lovable.app/' },
+  { id: 'lan-ha', title: 'Lan Hạ Stillwater', tagline: 'Small-boat bay expedition', profile: 'cinematic', prompt: 'lan-ha-stillwater-expedition.md', url: 'https://stillwater-bay-voyage.lovable.app/' },
+  { id: 'son-tra', title: 'Sơn Trà Curve', tagline: 'Dawn road-cycling club', profile: 'cinematic', prompt: 'son-tra-curve-cycling.md', url: 'https://son-tra-dawn-ride.lovable.app/' },
 ]
 
 const FILTERS: Array<{ key: Profile | 'all'; label: string }> = [
