@@ -1,15 +1,45 @@
 {
   "meta": {
     "source_dir": "/Users/leo/Workspace/Personal/motion-site/prompts",
-    "count": 14,
+    "count": 54,
     "generator": "build_index.py",
     "note": "regex-derived tags are lower bounds; re-run after adding prompts"
   },
   "prompts": [
     {
+      "file": "afterglow-camp-kit.md",
+      "name": "Afterglow Camp",
+      "category": "Curated sunset kit · ecommerce",
+      "archetype": "minimal-hero",
+      "size_chars": 4127,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "DM Sans"
+      ],
+      "techniques": [
+        "custom-easing",
+        "dark-theme",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#211c18",
+        "#2d3552",
+        "#716961",
+        "#c85a2b",
+        "#f6f0e5",
+        "#ffffff"
+      ]
+    },
+    {
       "file": "aperture-team-settings.md",
-      "name": "Aperture Team Settings",
-      "category": "SaaS Settings · product-ui",
+      "name": "Aperture Team Settings ⭐",
+      "category": "SaaS Settings",
       "archetype": "minimal-hero",
       "size_chars": 7625,
       "stack": [
@@ -42,8 +72,8 @@
     },
     {
       "file": "aphelion-hero.md",
-      "name": "Aphelion Hero",
-      "category": "",
+      "name": "Aphelion",
+      "category": "Private orbital travel",
       "archetype": "minimal-hero",
       "size_chars": 4573,
       "stack": [
@@ -72,8 +102,8 @@
     },
     {
       "file": "arcadia-goods-storefront.md",
-      "name": "Arcadia Goods Storefront",
-      "category": "Storefront · ecommerce",
+      "name": "Arcadia Goods ⭐",
+      "category": "Storefront",
       "archetype": "full-landing",
       "size_chars": 8236,
       "stack": [
@@ -106,9 +136,300 @@
       ]
     },
     {
+      "file": "atlas-fleet-ops.md",
+      "name": "Atlas Fleet Ops",
+      "category": "Logistics ops dashboard",
+      "archetype": "minimal-hero",
+      "size_chars": 9327,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "custom-easing",
+        "dark-theme",
+        "glass",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#0b1120",
+        "#0f172a",
+        "#16a34a",
+        "#1e293b",
+        "#22c55e",
+        "#2563eb",
+        "#334155",
+        "#3b82f6"
+      ]
+    },
+    {
+      "file": "aurelia-landing.md",
+      "name": "Aurelia",
+      "category": "Haute-horlogerie watchmaker (full landing)",
+      "archetype": "full-landing",
+      "size_chars": 13651,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "framer-motion",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter",
+        "Playfair Display"
+      ],
+      "techniques": [
+        "custom-easing",
+        "dark-theme",
+        "framer-motion",
+        "glass",
+        "pill-ui",
+        "reduced-motion",
+        "sticky-stack",
+        "text-glow",
+        "video-bg"
+      ],
+      "palette_sample": [
+        "#0b0906",
+        "#c9a227",
+        "#f7f2e7"
+      ]
+    },
+    {
+      "file": "bay-bounce-island-club.md",
+      "name": "Bay Bounce",
+      "category": "Small-group bay day club · playful",
+      "archetype": "full-landing",
+      "size_chars": 4159,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Anton",
+        "DM Sans"
+      ],
+      "techniques": [
+        "custom-easing",
+        "marquee",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#13233a",
+        "#26c6da",
+        "#3ca66b",
+        "#f7fff7",
+        "#ff607c",
+        "#ffb82e"
+      ]
+    },
+    {
+      "file": "beacon-flags-console.md",
+      "name": "Beacon Feature Flags",
+      "category": "Flag management console",
+      "archetype": "full-landing",
+      "size_chars": 9331,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "custom-easing",
+        "dark-theme",
+        "glass",
+        "pill-ui",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#0b1120",
+        "#0f172a",
+        "#16a34a",
+        "#1e293b",
+        "#22c55e",
+        "#2563eb",
+        "#334155",
+        "#3b82f6"
+      ]
+    },
+    {
+      "file": "bloop-synth-plugin.md",
+      "name": "Bloop",
+      "category": "Synth VST plugin",
+      "archetype": "full-landing",
+      "size_chars": 10582,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Space Grotesk"
+      ],
+      "techniques": [
+        "custom-easing",
+        "dark-theme",
+        "pill-ui",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#1b1033",
+        "#22163b",
+        "#2ff3e0",
+        "#c6ff3e",
+        "#f4f0ff",
+        "#ff3ea5",
+        "#ff9f1c"
+      ]
+    },
+    {
+      "file": "chao-nha-weekend-routes.md",
+      "name": "Chào Nhà",
+      "category": "Micro-adventure campaign · playful",
+      "archetype": "full-landing",
+      "size_chars": 4468,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Bricolage Grotesque"
+      ],
+      "techniques": [
+        "custom-easing",
+        "marquee",
+        "parallax",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#1b1a35",
+        "#21c7d9",
+        "#7347d8",
+        "#f6c945",
+        "#ff5c7a",
+        "#fff8ea"
+      ]
+    },
+    {
+      "file": "coastsignal-route-dashboard.md",
+      "name": "CoastSignal",
+      "category": "Coastal mobility operations · product-ui",
+      "archetype": "minimal-hero",
+      "size_chars": 4430,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "custom-easing",
+        "dark-theme",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#0b1722",
+        "#0b6e99",
+        "#102a43",
+        "#132536",
+        "#14805e",
+        "#294052",
+        "#627d98",
+        "#c24141"
+      ]
+    },
+    {
+      "file": "deltascope-kon-tum-console.md",
+      "name": "DeltaScope",
+      "category": "Agricultural operations dashboard · product-ui",
+      "archetype": "minimal-hero",
+      "size_chars": 5048,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "custom-easing",
+        "dark-theme",
+        "glass",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#0b1120",
+        "#0f172a",
+        "#16a34a",
+        "#1e293b",
+        "#22c55e",
+        "#2563eb",
+        "#334155",
+        "#3b82f6"
+      ]
+    },
+    {
+      "file": "doodlecamp-kids-coding.md",
+      "name": "Doodlecamp",
+      "category": "Kids coding camp",
+      "archetype": "full-landing",
+      "size_chars": 10892,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "DM Sans"
+      ],
+      "techniques": [
+        "custom-easing",
+        "pill-ui",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#23262b",
+        "#38bdf8",
+        "#4ade80",
+        "#fde047",
+        "#ff6b6b",
+        "#fffdf6"
+      ]
+    },
+    {
       "file": "fizzpop-soda-landing.md",
-      "name": "FizzPop Soda",
-      "category": "Consumer Brand · playful",
+      "name": "FizzPop Soda ⭐",
+      "category": "Consumer brand",
       "archetype": "full-landing",
       "size_chars": 8554,
       "stack": [
@@ -138,9 +459,142 @@
       ]
     },
     {
+      "file": "fjellrev-shell-product-page.md",
+      "name": "Fjellrev",
+      "category": "Alpine shell product page",
+      "archetype": "full-landing",
+      "size_chars": 9881,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "custom-easing",
+        "glass",
+        "pill-ui",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#0f172a",
+        "#54555a",
+        "#dc2626",
+        "#e4e7eb",
+        "#f2f1ed",
+        "#f5f6f7",
+        "#ff5a1f",
+        "#ffffff"
+      ]
+    },
+    {
+      "file": "glyphery-type-foundry-shop.md",
+      "name": "Glyphery",
+      "category": "Digital type foundry shop",
+      "archetype": "full-landing",
+      "size_chars": 9548,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter",
+        "Space Grotesk"
+      ],
+      "techniques": [
+        "crossfade-loop",
+        "custom-easing",
+        "dark-theme",
+        "glass",
+        "pill-ui",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#111111",
+        "#4f46e5",
+        "#e11d48",
+        "#e5e5e5",
+        "#f5f5f5",
+        "#ffffff"
+      ]
+    },
+    {
+      "file": "grain-and-gram-coffee-shop.md",
+      "name": "Grain & Gram",
+      "category": "Coffee shop + subscription",
+      "archetype": "full-landing",
+      "size_chars": 10853,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "crossfade-loop",
+        "custom-easing",
+        "dark-theme",
+        "glass",
+        "marquee",
+        "parallax",
+        "pill-ui",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#2a1e17",
+        "#4b6b3a",
+        "#c6742a",
+        "#e8dfd0",
+        "#f1eae0",
+        "#fbf8f3"
+      ]
+    },
+    {
+      "file": "green-river-postcard-studio.md",
+      "name": "Green River Studio",
+      "category": "Interactive postcard maker · playful",
+      "archetype": "minimal-hero",
+      "size_chars": 4578,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Bricolage Grotesque",
+        "DM Sans"
+      ],
+      "techniques": [
+        "crossfade-loop",
+        "custom-easing",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#1e2935",
+        "#38a169",
+        "#3e8bff",
+        "#f6c945",
+        "#ff668a",
+        "#fff3d9"
+      ]
+    },
+    {
       "file": "halcyon-hero.md",
-      "name": "Halcyon Hero",
-      "category": "",
+      "name": "Halcyon",
+      "category": "AI compute infrastructure",
       "archetype": "minimal-hero",
       "size_chars": 5696,
       "stack": [
@@ -170,9 +624,220 @@
       ]
     },
     {
+      "file": "harvest-hands-river-essay.md",
+      "name": "Harvest Hands",
+      "category": "Collaborative agriculture essay · editorial",
+      "archetype": "minimal-hero",
+      "size_chars": 4192,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [],
+      "techniques": [
+        "crossfade-loop",
+        "custom-easing",
+        "dark-theme",
+        "parallax",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#191c18",
+        "#1f2e22",
+        "#416a45",
+        "#6c7169",
+        "#f8f6ef"
+      ]
+    },
+    {
+      "file": "huong-afterglow-journal.md",
+      "name": "Hương Afterglow",
+      "category": "Place and memory journal · editorial",
+      "archetype": "minimal-hero",
+      "size_chars": 3945,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "custom-easing",
+        "parallax",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#211d18",
+        "#2d3328",
+        "#6d694c",
+        "#766e65",
+        "#9a4d2b",
+        "#b26b3d",
+        "#d6a16a",
+        "#eee1cc"
+      ]
+    },
+    {
+      "file": "karst-and-canvas-print-shop.md",
+      "name": "Karst & Canvas",
+      "category": "Transformed graphic poster shop · ecommerce",
+      "archetype": "minimal-hero",
+      "size_chars": 5700,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "custom-easing",
+        "reduced-motion",
+        "sticky-stack"
+      ],
+      "palette_sample": [
+        "#1c1d1a",
+        "#2f5c49",
+        "#6b6d67",
+        "#a75438",
+        "#d7dfd2",
+        "#faf9f5",
+        "#ffffff"
+      ]
+    },
+    {
+      "file": "karstline-ninh-binh-retreat.md",
+      "name": "Karstline",
+      "category": "Low-impact retreat · cinematic",
+      "archetype": "minimal-hero",
+      "size_chars": 4691,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "framer-motion",
+        "lucide"
+      ],
+      "fonts": [
+        "Instrument Serif",
+        "Manrope"
+      ],
+      "techniques": [
+        "custom-easing",
+        "dark-theme",
+        "framer-motion",
+        "glass",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#080a08",
+        "#0e110e",
+        "#f2c66d",
+        "#f5f0e6"
+      ]
+    },
+    {
+      "file": "kinh-tuyen-rice-river-landing.md",
+      "name": "Kinh Tuyến",
+      "category": "Regenerative landscape studio · cinematic",
+      "archetype": "minimal-hero",
+      "size_chars": 4854,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "framer-motion",
+        "lucide"
+      ],
+      "fonts": [],
+      "techniques": [
+        "custom-easing",
+        "framer-motion",
+        "glass",
+        "pill-ui",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#07110d",
+        "#0d1a13",
+        "#d9f06a",
+        "#f6f2e9"
+      ]
+    },
+    {
+      "file": "lan-ha-stillwater-expedition.md",
+      "name": "Lan Hạ Stillwater",
+      "category": "Small-boat expedition · cinematic",
+      "archetype": "minimal-hero",
+      "size_chars": 4367,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "framer-motion",
+        "lucide"
+      ],
+      "fonts": [
+        "Geist"
+      ],
+      "techniques": [
+        "custom-easing",
+        "dark-theme",
+        "framer-motion",
+        "glass",
+        "parallax",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#061014",
+        "#167c77",
+        "#7fe4dd",
+        "#e8eff0"
+      ]
+    },
+    {
+      "file": "lantern-current-hoi-an-essay.md",
+      "name": "Lantern Current",
+      "category": "Urban river essay · editorial",
+      "archetype": "minimal-hero",
+      "size_chars": 4426,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [],
+      "techniques": [
+        "custom-easing",
+        "parallax",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#222019",
+        "#716c5f",
+        "#b4531f",
+        "#fbf7ed"
+      ]
+    },
+    {
       "file": "ledgerline-changelog.md",
-      "name": "Ledgerline Changelog",
-      "category": "Docs / Changelog · editorial",
+      "name": "Ledgerline Changelog ⭐",
+      "category": "Docs / changelog",
       "archetype": "minimal-hero",
       "size_chars": 6361,
       "stack": [
@@ -199,9 +864,72 @@
       ]
     },
     {
+      "file": "limestone-carry-travel-gear.md",
+      "name": "Limestone Carry",
+      "category": "Modular travel gear · ecommerce",
+      "archetype": "minimal-hero",
+      "size_chars": 4358,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "custom-easing",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#18201d",
+        "#315e4a",
+        "#68706c",
+        "#e36a3d",
+        "#f7f7f3",
+        "#ffffff"
+      ]
+    },
+    {
+      "file": "loam-and-kiln-storefront.md",
+      "name": "Loam & Kiln",
+      "category": "Ceramics storefront",
+      "archetype": "full-landing",
+      "size_chars": 8846,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "crossfade-loop",
+        "custom-easing",
+        "glass",
+        "marquee",
+        "parallax",
+        "pill-ui",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#2b2320",
+        "#3f6d5b",
+        "#b4552f",
+        "#e6d9c6",
+        "#f3ebe0",
+        "#fbf7f2"
+      ]
+    },
+    {
       "file": "maison-ondes-product-page.md",
-      "name": "Maison Ondes Product Page",
-      "category": "Product Page · ecommerce",
+      "name": "Maison Ondes ⭐",
+      "category": "Product page",
       "archetype": "full-landing",
       "size_chars": 9569,
       "stack": [
@@ -233,8 +961,8 @@
     },
     {
       "file": "meridian-longread-article.md",
-      "name": "Meridian Longread",
-      "category": "Magazine Article · editorial",
+      "name": "Meridian Longread ⭐",
+      "category": "Magazine article",
       "archetype": "minimal-hero",
       "size_chars": 7183,
       "stack": [
@@ -260,9 +988,38 @@
       ]
     },
     {
+      "file": "mochi-club-snackbox.md",
+      "name": "Mochi Club",
+      "category": "Snack subscription box",
+      "archetype": "full-landing",
+      "size_chars": 9702,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [],
+      "techniques": [
+        "custom-easing",
+        "marquee",
+        "pill-ui",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#2e1f3b",
+        "#86efac",
+        "#a78bfa",
+        "#f472b6",
+        "#fdba74",
+        "#fff9f5"
+      ]
+    },
+    {
       "file": "monolith-hero.md",
-      "name": "Monolith Hero",
-      "category": "",
+      "name": "Monolith",
+      "category": "Architecture / design studio",
       "archetype": "minimal-hero",
       "size_chars": 4580,
       "stack": [
@@ -291,8 +1048,8 @@
     },
     {
       "file": "motion-site-builder-landing.md",
-      "name": "Motion Site Builder (official, dogfood)",
-      "category": "Landing Page",
+      "name": "Motion Site Builder (official dogfood)",
+      "category": "Product landing",
       "archetype": "full-landing",
       "size_chars": 15776,
       "stack": [
@@ -325,9 +1082,130 @@
       ]
     },
     {
+      "file": "noctua-hero.md",
+      "name": "Noctua",
+      "category": "Dark-sky observatory retreats",
+      "archetype": "minimal-hero",
+      "size_chars": 6451,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "custom-easing",
+        "dark-theme",
+        "glass",
+        "pill-ui",
+        "reduced-motion",
+        "text-glow",
+        "video-bg"
+      ],
+      "palette_sample": [
+        "#05070c",
+        "#6ea8ff",
+        "#ffffff"
+      ]
+    },
+    {
+      "file": "paddy-pattern-field-planner.md",
+      "name": "Paddy Pattern",
+      "category": "Terrace crop planning tool · product-ui",
+      "archetype": "minimal-hero",
+      "size_chars": 4388,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [],
+      "techniques": [
+        "custom-easing",
+        "dark-theme",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#0d1510",
+        "#17202a",
+        "#18231b",
+        "#2d7d4c",
+        "#314036",
+        "#5a6e2f",
+        "#687482",
+        "#b63c3c"
+      ]
+    },
+    {
+      "file": "pawpal-adoption-day.md",
+      "name": "PawPal Adoption Day",
+      "category": "Campaign microsite",
+      "archetype": "full-landing",
+      "size_chars": 9977,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "custom-easing",
+        "pill-ui",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#20242b",
+        "#2dd4a7",
+        "#5b8def",
+        "#ff6f91",
+        "#ffb454",
+        "#fffbf2"
+      ]
+    },
+    {
+      "file": "phan-thiet-coast-capsule.md",
+      "name": "Phan Thiết Coast",
+      "category": "Travel apparel capsule · ecommerce",
+      "archetype": "minimal-hero",
+      "size_chars": 4533,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter",
+        "Poppins"
+      ],
+      "techniques": [
+        "custom-easing",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#176f78",
+        "#202421",
+        "#6d746f",
+        "#cf5c72",
+        "#fafaf7",
+        "#ffffff"
+      ]
+    },
+    {
       "file": "pixeljam-arcade-fest.md",
-      "name": "PixelJam Arcade Fest",
-      "category": "Event / Campaign · playful",
+      "name": "PixelJam Arcade Fest ⭐",
+      "category": "Event / campaign",
       "archetype": "full-landing",
       "size_chars": 8649,
       "stack": [
@@ -360,9 +1238,38 @@
       ]
     },
     {
+      "file": "praxis-docs-page.md",
+      "name": "Praxis Docs",
+      "category": "Developer documentation",
+      "archetype": "full-landing",
+      "size_chars": 9160,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "custom-easing",
+        "glass",
+        "marquee",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#18181b",
+        "#4338ca",
+        "#f5f5f7",
+        "#ffffff"
+      ]
+    },
+    {
       "file": "pulsegrid-analytics-dashboard.md",
-      "name": "PulseGrid Analytics",
-      "category": "Dashboard · product-ui",
+      "name": "PulseGrid Analytics ⭐",
+      "category": "Dashboard",
       "archetype": "minimal-hero",
       "size_chars": 8398,
       "stack": [
@@ -393,9 +1300,105 @@
       ]
     },
     {
+      "file": "quill-billing-usage.md",
+      "name": "Quill Billing & Usage",
+      "category": "Billing / usage settings",
+      "archetype": "minimal-hero",
+      "size_chars": 8707,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "custom-easing",
+        "dark-theme",
+        "pill-ui",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#0f172a",
+        "#16a34a",
+        "#1e293b",
+        "#22c55e",
+        "#2563eb",
+        "#334155",
+        "#3b82f6",
+        "#64748b"
+      ]
+    },
+    {
+      "file": "relay-incident-console.md",
+      "name": "Relay Incident Console",
+      "category": "On-call / incident response",
+      "archetype": "minimal-hero",
+      "size_chars": 9928,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "custom-easing",
+        "dark-theme",
+        "glass",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#0b1120",
+        "#0f172a",
+        "#16a34a",
+        "#1e293b",
+        "#22c55e",
+        "#2563eb",
+        "#334155",
+        "#3b82f6"
+      ]
+    },
+    {
+      "file": "rice-and-ride-festival.md",
+      "name": "Rice & Ride",
+      "category": "Community cycling and food festival · playful",
+      "archetype": "full-landing",
+      "size_chars": 4325,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Space Grotesk"
+      ],
+      "techniques": [
+        "custom-easing",
+        "marquee",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#18332b",
+        "#1eb5c3",
+        "#53a451",
+        "#f05a3d",
+        "#f5c542",
+        "#fff4c7"
+      ]
+    },
+    {
       "file": "skyelite-hero.md",
-      "name": "SkyElite Private Jets",
-      "category": "Landing Page",
+      "name": "SkyElite",
+      "category": "Private-jet landing",
       "archetype": "minimal-hero",
       "size_chars": 4724,
       "stack": [
@@ -427,9 +1430,188 @@
       ]
     },
     {
+      "file": "slowpost-newsletter-issue.md",
+      "name": "The Slow Post",
+      "category": "Newsletter issue",
+      "archetype": "minimal-hero",
+      "size_chars": 7494,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "custom-easing",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#24231d",
+        "#5b6e4f",
+        "#f3efe4",
+        "#fdfbf6"
+      ]
+    },
+    {
+      "file": "son-tra-curve-cycling.md",
+      "name": "Sơn Trà Curve",
+      "category": "Cycling club · cinematic",
+      "archetype": "minimal-hero",
+      "size_chars": 4577,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "framer-motion",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter",
+        "Kanit"
+      ],
+      "techniques": [
+        "custom-easing",
+        "dark-theme",
+        "framer-motion",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#080b0d",
+        "#d7ff3f",
+        "#f4f7f7"
+      ]
+    },
+    {
+      "file": "substrata-engineering-blog.md",
+      "name": "Substrata Engineering Blog",
+      "category": "Blog index",
+      "archetype": "minimal-hero",
+      "size_chars": 7726,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter",
+        "Space Grotesk"
+      ],
+      "techniques": [
+        "custom-easing",
+        "glass",
+        "parallax",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#0f6b72",
+        "#15181b",
+        "#f1f1ee",
+        "#fafaf8"
+      ]
+    },
+    {
+      "file": "tidebreak-hero.md",
+      "name": "Tidebreak",
+      "category": "Deep-sea autonomous robotics",
+      "archetype": "minimal-hero",
+      "size_chars": 6600,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "custom-easing",
+        "dark-theme",
+        "glass",
+        "pill-ui",
+        "reduced-motion",
+        "text-glow",
+        "video-bg"
+      ],
+      "palette_sample": [
+        "#051a24",
+        "#2dd4bf",
+        "#d7e2ea"
+      ]
+    },
+    {
+      "file": "tram-mua-sapa-field-journal.md",
+      "name": "Trạm Mùa",
+      "category": "Seasonal field journal · editorial",
+      "archetype": "minimal-hero",
+      "size_chars": 4649,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "custom-easing",
+        "glass",
+        "parallax",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#1b1b17",
+        "#6f6c62",
+        "#a34f2b",
+        "#f7f4ec"
+      ]
+    },
+    {
+      "file": "velvet-static-hero.md",
+      "name": "Velvet Static",
+      "category": "Hi-fi vinyl listening bar",
+      "archetype": "minimal-hero",
+      "size_chars": 7402,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "char-reveal",
+        "custom-easing",
+        "dark-theme",
+        "glass",
+        "pill-ui",
+        "reduced-motion",
+        "text-glow",
+        "video-bg"
+      ],
+      "palette_sample": [
+        "#0d0906",
+        "#e0a458",
+        "#f5efe4"
+      ]
+    },
+    {
       "file": "verdant-hero.md",
-      "name": "Verdant Hero",
-      "category": "",
+      "name": "Verdant",
+      "category": "Regenerative agriculture",
       "archetype": "minimal-hero",
       "size_chars": 4575,
       "stack": [
@@ -453,6 +1635,67 @@
         "#1f2a1d",
         "#e1e0cc",
         "#f4f1e8"
+      ]
+    },
+    {
+      "file": "watershed-one-river-monitor.md",
+      "name": "Watershed One",
+      "category": "River monitoring dashboard · product-ui",
+      "archetype": "minimal-hero",
+      "size_chars": 4552,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Geist"
+      ],
+      "techniques": [
+        "custom-easing",
+        "dark-theme",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#0b1420",
+        "#102033",
+        "#152235",
+        "#16845b",
+        "#1769aa",
+        "#2a3a4d",
+        "#607184",
+        "#c27614"
+      ]
+    },
+    {
+      "file": "waypoints-photo-essay.md",
+      "name": "Waypoints",
+      "category": "Travel photo essay",
+      "archetype": "full-landing",
+      "size_chars": 9390,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "custom-easing",
+        "glass",
+        "parallax",
+        "pill-ui",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#221d18",
+        "#bb5b34",
+        "#fbf9f4"
       ]
     }
   ]

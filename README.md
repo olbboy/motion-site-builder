@@ -6,12 +6,12 @@
 
 **Build cinematic, motion-driven websites with AI — from a single prompt.**
 
-A library of 14 original, production-grade website prompts + a suite of agent skills that **build**, **review**, and **audit** motion UI so the result actually looks premium.
+A library of 54 original, production-grade website prompts + a suite of agent skills that **build**, **review**, and **audit** motion UI so the result actually looks premium.
 
 [![CI](https://github.com/olbboy/motion-site-builder/actions/workflows/ci.yml/badge.svg)](https://github.com/olbboy/motion-site-builder/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/olbboy/motion-site-builder?color=7342e2)](https://github.com/olbboy/motion-site-builder/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Prompts](https://img.shields.io/badge/prompts-14%20original-8A2BE2)](prompts/README.md)
+[![Prompts](https://img.shields.io/badge/prompts-54%20original-8A2BE2)](prompts/README.md)
 [![Lint Rules](https://img.shields.io/badge/motion%20lint%20rules-17-success)](skills/motion-site-builder/scripts/lint_motion.py)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
@@ -29,7 +29,7 @@ A library of 14 original, production-grade website prompts + a suite of agent sk
 
 | | |
 |---|---|
-| 🎬 **[Prompt Library](prompts/README.md)** | 14 original prompts (cinematic heroes, dashboards, articles, storefronts) ready to paste into Bolt, Lovable, v0, or Cursor — including [our own landing page](prompts/motion-site-builder-landing.md) and two 100/A+ exemplars per non-cinematic profile. Every prompt is authored from the project's own design DNA — no brand replicas, no hardcoded third-party media (bring your own licensed footage). |
+| 🎬 **[Prompt Library](prompts/README.md)** | 54 original prompts (cinematic heroes, dashboards, docs, storefronts, campaigns) ready to paste into Bolt, Lovable, v0, or Cursor — including [our own landing page](prompts/motion-site-builder-landing.md), two 100/A+ exemplars per non-cinematic profile, and a 20-concept Vietnam landscape collection with locally downloaded Pexels media targets. Every prompt is authored from the project's own design DNA — no brand replicas and no hotlinked third-party assets. |
 | 🤖 **Agent Skills (×3)** | A suite for Claude Code and compatible agents: **[motion-site-builder](skills/motion-site-builder/SKILL.md)** (15-step Plan → Build → Validate → working code *or* portable prompt), **[review-motion](skills/review-motion/SKILL.md)** (strict diff review → Before/After table + Block/Approve), **[improve-motion](skills/improve-motion/SKILL.md)** (audit a whole codebase → self-contained plans for cheaper models) |
 | ✅ **[Motion Linter](skills/motion-site-builder/scripts/lint_motion.py)** | 17 rules that catch what makes AI-generated sites look cheap: missing reduced-motion, layout-property animation, easing chaos, accent-color soup — plus interaction craft (`ease-in` on UI, `scale(0)`, popover origin, missing press feedback) |
 | 🔌 **[MCP Server](skills/motion-site-builder/scripts/server.py)** | Zero-dependency tools: validate code, fetch design tokens, suggest motion patterns, explain the right easing per intent, retrieve the nearest reference prompt |
@@ -152,7 +152,7 @@ Prompts, lint rules, and primitives are all welcome — see [CONTRIBUTING.md](CO
 
 ## ⚖️ License & Provenance
 
-- **Everything in this repo — code, skill, linter, docs, landing page, and all 14 prompts**: [MIT](LICENSE).
+- **Everything in this repo — code, skill, linter, docs, landing page, and all 54 prompts**: [MIT](LICENSE).
 - **Original prompts**: every prompt is authored from this project's own design profiles and motion DNA. No brand replicas, no copied copy, and no hardcoded third-party assets — media is referenced as placeholders you fill in.
 - **Bring your own media**: supply footage/images you have rights to (your own, or royalty-free sources such as Pexels, Coverr, or Unsplash under their licenses). All fonts are open-licensed (Google Fonts / OFL).
 
