@@ -1,0 +1,459 @@
+{
+  "meta": {
+    "source_dir": "/Users/leo/Workspace/Personal/motion-site/prompts",
+    "count": 14,
+    "generator": "build_index.py",
+    "note": "regex-derived tags are lower bounds; re-run after adding prompts"
+  },
+  "prompts": [
+    {
+      "file": "aperture-team-settings.md",
+      "name": "Aperture Team Settings",
+      "category": "SaaS Settings · product-ui",
+      "archetype": "minimal-hero",
+      "size_chars": 7625,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "3d-imagery",
+        "custom-easing",
+        "dark-theme",
+        "pill-ui",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#0f172a",
+        "#16a34a",
+        "#1e293b",
+        "#22c55e",
+        "#2563eb",
+        "#334155",
+        "#3b82f6",
+        "#64748b"
+      ]
+    },
+    {
+      "file": "aphelion-hero.md",
+      "name": "Aphelion Hero",
+      "category": "",
+      "archetype": "minimal-hero",
+      "size_chars": 4573,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Instrument Serif",
+        "Inter"
+      ],
+      "techniques": [
+        "custom-easing",
+        "pill-ui",
+        "raf-lerp",
+        "reduced-motion",
+        "video-bg"
+      ],
+      "palette_sample": [
+        "#00d2ff",
+        "#051a24",
+        "#d7e2ea"
+      ]
+    },
+    {
+      "file": "arcadia-goods-storefront.md",
+      "name": "Arcadia Goods Storefront",
+      "category": "Storefront · ecommerce",
+      "archetype": "full-landing",
+      "size_chars": 8236,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "crossfade-loop",
+        "custom-easing",
+        "dark-theme",
+        "glass",
+        "marquee",
+        "parallax",
+        "pill-ui",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#111827",
+        "#18181b",
+        "#e11d48",
+        "#f4f4f5",
+        "#fafafa",
+        "#ffffff"
+      ]
+    },
+    {
+      "file": "fizzpop-soda-landing.md",
+      "name": "FizzPop Soda",
+      "category": "Consumer Brand · playful",
+      "archetype": "full-landing",
+      "size_chars": 8554,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Bricolage Grotesque",
+        "Space Grotesk"
+      ],
+      "techniques": [
+        "custom-easing",
+        "marquee",
+        "pill-ui",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#1a1a2e",
+        "#22d3ee",
+        "#7c3aed",
+        "#facc15",
+        "#ff5c8a",
+        "#fff8f0"
+      ]
+    },
+    {
+      "file": "halcyon-hero.md",
+      "name": "Halcyon Hero",
+      "category": "",
+      "archetype": "minimal-hero",
+      "size_chars": 5696,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Instrument Serif",
+        "Inter"
+      ],
+      "techniques": [
+        "custom-easing",
+        "dark-theme",
+        "glass",
+        "pill-ui",
+        "reduced-motion",
+        "text-glow",
+        "video-bg"
+      ],
+      "palette_sample": [
+        "#0b0b0f",
+        "#7342e2",
+        "#ffffff"
+      ]
+    },
+    {
+      "file": "ledgerline-changelog.md",
+      "name": "Ledgerline Changelog",
+      "category": "Docs / Changelog · editorial",
+      "archetype": "minimal-hero",
+      "size_chars": 6361,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "custom-easing",
+        "glass",
+        "marquee",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#1a1a1a",
+        "#1d4ed8",
+        "#f5f4ef",
+        "#ffffff"
+      ]
+    },
+    {
+      "file": "maison-ondes-product-page.md",
+      "name": "Maison Ondes Product Page",
+      "category": "Product Page · ecommerce",
+      "archetype": "full-landing",
+      "size_chars": 9569,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "crossfade-loop",
+        "custom-easing",
+        "dark-theme",
+        "glass",
+        "pill-ui",
+        "reduced-motion",
+        "sticky-stack"
+      ],
+      "palette_sample": [
+        "#111111",
+        "#1a1a1a",
+        "#d4af37",
+        "#f43f5e",
+        "#fafafa"
+      ]
+    },
+    {
+      "file": "meridian-longread-article.md",
+      "name": "Meridian Longread",
+      "category": "Magazine Article · editorial",
+      "archetype": "minimal-hero",
+      "size_chars": 7183,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "custom-easing",
+        "glass",
+        "parallax",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#1a1a1a",
+        "#b4531f",
+        "#fbfbf9"
+      ]
+    },
+    {
+      "file": "monolith-hero.md",
+      "name": "Monolith Hero",
+      "category": "",
+      "archetype": "minimal-hero",
+      "size_chars": 4580,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Anton",
+        "Inter"
+      ],
+      "techniques": [
+        "custom-easing",
+        "dark-theme",
+        "pill-ui",
+        "reduced-motion",
+        "video-bg"
+      ],
+      "palette_sample": [
+        "#0a0a0c",
+        "#ef4d23",
+        "#f2f0ec"
+      ]
+    },
+    {
+      "file": "motion-site-builder-landing.md",
+      "name": "Motion Site Builder (official, dogfood)",
+      "category": "Landing Page",
+      "archetype": "full-landing",
+      "size_chars": 15776,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "framer-motion",
+        "lucide"
+      ],
+      "fonts": [
+        "Instrument Serif",
+        "Inter"
+      ],
+      "techniques": [
+        "crossfade-loop",
+        "custom-easing",
+        "dark-theme",
+        "framer-motion",
+        "glass",
+        "marquee",
+        "pill-ui",
+        "reduced-motion",
+        "text-glow"
+      ],
+      "palette_sample": [
+        "#0c0c0c",
+        "#7342e2",
+        "#ffffff"
+      ]
+    },
+    {
+      "file": "pixeljam-arcade-fest.md",
+      "name": "PixelJam Arcade Fest",
+      "category": "Event / Campaign · playful",
+      "archetype": "full-landing",
+      "size_chars": 8649,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Anton",
+        "Space Grotesk"
+      ],
+      "techniques": [
+        "custom-easing",
+        "dark-theme",
+        "marquee",
+        "pill-ui",
+        "reduced-motion",
+        "text-glow"
+      ],
+      "palette_sample": [
+        "#0d0221",
+        "#190a34",
+        "#4cc9f0",
+        "#b5179e",
+        "#f5f3ff",
+        "#f72585",
+        "#ffd60a"
+      ]
+    },
+    {
+      "file": "pulsegrid-analytics-dashboard.md",
+      "name": "PulseGrid Analytics",
+      "category": "Dashboard · product-ui",
+      "archetype": "minimal-hero",
+      "size_chars": 8398,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "custom-easing",
+        "dark-theme",
+        "glass",
+        "reduced-motion"
+      ],
+      "palette_sample": [
+        "#0f172a",
+        "#16a34a",
+        "#1e293b",
+        "#22c55e",
+        "#2563eb",
+        "#334155",
+        "#3b82f6",
+        "#64748b"
+      ]
+    },
+    {
+      "file": "skyelite-hero.md",
+      "name": "SkyElite Private Jets",
+      "category": "Landing Page",
+      "archetype": "minimal-hero",
+      "size_chars": 4724,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "Inter"
+      ],
+      "techniques": [
+        "custom-easing",
+        "glass",
+        "pill-ui",
+        "reduced-motion",
+        "video-bg"
+      ],
+      "palette_sample": [
+        "#111827",
+        "#1a2229",
+        "#1f2937",
+        "#202a36",
+        "#4b5563",
+        "#6b7280",
+        "#9ca3af",
+        "#d1d5db"
+      ]
+    },
+    {
+      "file": "verdant-hero.md",
+      "name": "Verdant Hero",
+      "category": "",
+      "archetype": "minimal-hero",
+      "size_chars": 4575,
+      "stack": [
+        "react",
+        "tailwind",
+        "typescript",
+        "vite",
+        "lucide"
+      ],
+      "fonts": [
+        "DM Sans",
+        "Playfair Display"
+      ],
+      "techniques": [
+        "custom-easing",
+        "pill-ui",
+        "reduced-motion",
+        "video-bg"
+      ],
+      "palette_sample": [
+        "#1f2a1d",
+        "#e1e0cc",
+        "#f4f1e8"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "meta": {
+    "name": "motion-site default taste",
+    "version": "1.0.0",
+    "note": "All taste lives here. Engine scripts read this file — edit values to re-skin the skill for your own design language. Ranges are [min, max] in seconds unless noted."
+  },
+  "easings": {
+    "expo-out": "cubic-bezier(0.16, 1, 0.3, 1)",
+    "quint-out": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "spring-pop": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+    "ease-out": "ease-out",
+    "ease-in-out": "ease-in-out"
+  },
+  "durations": {
+    "micro": [0.15, 0.4],
+    "entrance": [0.5, 1.2],
+    "scroll_reveal": [0.5, 1.0],
+    "video_crossfade": [0.4, 0.7]
+  },
+  "stagger": { "min": 0.08, "max": 0.2, "default": 0.12 },
+  "entrance": {
+    "translate_y_px": [10, 64],
+    "blur_px": [0, 8],
+    "note": "fade + rise; optional blur-to-sharp"
+  },
+  "typography": {
+    "display": {
+      "suggested_fonts": ["Instrument Serif", "Playfair Display", "Kanit", "Anton"],
+      "tracking": "negative",
+      "leading": [0.9, 1.15],
+      "emphasis_technique": "wrap one phrase in <em> with italic or muted color swap"
+    },
+    "body": {
+      "suggested_fonts": ["Inter", "Geist", "DM Sans"],
+      "opacity_tiers": [1, 0.8, 0.7, 0.6, 0.4]
+    }
+  },
+  "palette": {
+    "strategy": "single-accent",
+    "max_accent_hues": 1,
+    "families": {
+      "mono-dark": {
+        "background": ["#0C0C0C", "#0a0a0c", "#000000"],
+        "foreground": "#FFFFFF",
+        "accent_examples": ["#7342e2", "#00d2ff", "#ef4d23", "#ffda00"]
+      },
+      "teal-navy": {
+        "background": ["#051a24", "#192837", "#0d212c"],
+        "foreground": "#d7e2ea",
+        "accent_examples": ["#00d2ff"]
+      },
+      "green-cream": {
+        "background": ["#1f2a1d", "#3d5638"],
+        "foreground": "#f4f1e8",
+        "accent_examples": ["#e1e0cc"]
+      }
+    }
+  },
+  "layering": {
+    "video": 0,
+    "overlay": 1,
+    "content": 10,
+    "nav": 20,
+    "note": "explicit z-index on every layer; depth via layering, never WebGL"
+  },
+  "radius": {
+    "interactive": "rounded-full",
+    "panel": "rounded-t-[40px] .. rounded-t-[60px]",
+    "card": "rounded-2xl"
+  },
+  "dependencies": {
+    "allowed": [
+      "react", "react-dom", "typescript", "vite", "@vitejs/plugin-react",
+      "tailwindcss", "autoprefixer", "postcss",
+      "framer-motion", "motion", "lucide-react", "clsx", "tailwind-merge"
+    ],
+    "forbidden": [
+      "three", "@react-three/fiber", "@react-three/drei", "gsap",
+      "bootstrap", "@mui/material", "antd", "daisyui", "jquery"
+    ],
+    "note": "extend 'allowed' for your stack; 'forbidden' wins on conflict"
+  },
+  "video": {
+    "required_attrs": ["autoplay", "muted", "loop", "playsinline"],
+    "poster_required": true,
+    "note": "supply your own licensed/AI video URL; corpus CloudFront URLs may expire"
+  },
+  "interaction": {
+    "press_scale": [0.95, 0.98],
+    "press_duration_ms": [100, 160],
+    "ui_max_duration_ms": 300,
+    "ban_ease_in": true,
+    "popover_origin_aware": true,
+    "gate_hover_pointer_fine": true,
+    "note": "Micro-interaction craft (buttons, popovers, hover) distilled from Emil Kowalski's design-engineering philosophy. Rules M13-M17 read these flags and scope to INTERACTIVE elements only — never hero entrances / scroll storytelling, which are first-time/rare and may run longer. Full value catalog: references/interaction-standards.md."
+  },
+  "lint": {
+    "weights": { "error": 15, "warning": 5, "info": 1 },
+    "disabled_rules": [],
+    "severity_overrides": {},
+    "note": "disable rules by id (e.g. \"M11\"), or override severity: {\"M09\": \"info\"}"
+  }
+}

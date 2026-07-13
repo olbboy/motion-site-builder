@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "name": "playful",
+    "version": "1.0.0",
+    "note": "Bold, colorful, maximalist: vibrant multi-accent, springs with bounce, expressive scale, high-contrast. The loud counterpart to cinematic's quiet."
+  },
+  "easings": {
+    "spring-pop": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+    "back-out": "cubic-bezier(0.18, 0.89, 0.32, 1.28)",
+    "ease-out": "cubic-bezier(0.23, 1, 0.32, 1)",
+    "ease-in-out": "cubic-bezier(0.65, 0, 0.35, 1)"
+  },
+  "durations": {
+    "micro": [0.2, 0.45],
+    "entrance": [0.4, 0.9],
+    "scroll_reveal": [0.4, 0.8],
+    "video_crossfade": [0.4, 0.7]
+  },
+  "stagger": { "min": 0.06, "max": 0.14, "default": 0.09 },
+  "entrance": {
+    "translate_y_px": [12, 40],
+    "blur_px": [0, 0],
+    "note": "pop-in with overshoot (spring / back-out); visible bounce is welcome here"
+  },
+  "typography": {
+    "display": {
+      "suggested_fonts": ["Clash Display", "Anton", "Space Grotesk", "Bricolage Grotesque"],
+      "tracking": "neutral",
+      "leading": [0.95, 1.1],
+      "emphasis_technique": "color/highlight swap, outsized weight, marker underline"
+    },
+    "body": {
+      "suggested_fonts": ["Space Grotesk", "DM Sans", "Inter"],
+      "opacity_tiers": [1, 0.85, 0.7]
+    }
+  },
+  "palette": {
+    "strategy": "vibrant-multi",
+    "max_accent_hues": 4,
+    "families": {
+      "candy": {
+        "background": ["#FFF8F0", "#FDE68A", "#FFFFFF"],
+        "foreground": "#1A1A2E",
+        "accent_examples": ["#FF5C8A", "#7C3AED", "#22D3EE", "#FACC15"]
+      },
+      "neon-dark": {
+        "background": ["#0D0221", "#190A34"],
+        "foreground": "#F5F3FF",
+        "accent_examples": ["#F72585", "#4CC9F0", "#B5179E", "#FFD60A"]
+      }
+    }
+  },
+  "layering": {
+    "decor": 5,
+    "content": 10,
+    "nav": 20,
+    "note": "decorative shapes and gradients ARE the identity here (unlike cinematic, where they are banned)"
+  },
+  "radius": { "interactive": "rounded-full", "panel": "rounded-3xl", "card": "rounded-2xl" },
+  "dependencies": {
+    "allowed": [
+      "react", "react-dom", "typescript", "vite", "@vitejs/plugin-react",
+      "tailwindcss", "autoprefixer", "postcss",
+      "framer-motion", "motion", "lucide-react", "clsx", "tailwind-merge"
+    ],
+    "forbidden": ["three", "@react-three/fiber", "@react-three/drei", "jquery"],
+    "note": "keep it lean; reach for a spring first, not a timeline library"
+  },
+  "video": {
+    "required_attrs": ["autoplay", "muted", "loop", "playsinline"],
+    "poster_required": true,
+    "note": "video optional"
+  },
+  "interaction": {
+    "press_scale": [0.92, 0.97],
+    "press_duration_ms": [120, 200],
+    "ui_max_duration_ms": 320,
+    "ban_ease_in": true,
+    "popover_origin_aware": true,
+    "gate_hover_pointer_fine": true,
+    "note": "bigger, bouncier feedback; hover scale up to ~1.08; bounce reserved for deliberate/playful moments"
+  },
+  "lint": {
+    "weights": { "error": 15, "warning": 5, "info": 1 },
+    "disabled_rules": ["M08"],
+    "severity_overrides": {},
+    "note": "M08 (no gradients/blobs over video) disabled — decorative color is intentional here; multi-accent via max_accent_hues=4"
+  }
+}

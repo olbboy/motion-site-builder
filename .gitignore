@@ -1,0 +1,18 @@
+# internal working docs (plans, reports)
+plans/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+
+# node (if users scaffold demos locally)
+node_modules/
+dist/
+*.tsbuildinfo
+
+# os / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/

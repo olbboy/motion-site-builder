@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "motion-site-tools": {
+      "command": "python3",
+      "args": ["skills/motion-site-builder/scripts/server.py"]
+    }
+  }
+}

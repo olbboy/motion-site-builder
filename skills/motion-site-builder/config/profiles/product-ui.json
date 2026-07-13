@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "name": "product-ui",
+    "version": "1.0.0",
+    "note": "Crisp SaaS/dashboard UI: fast sub-300ms motion (feedback, not spectacle), light+dark, semantic multi-accent, Inter/system type. Motion serves function — Emil's home turf."
+  },
+  "easings": {
+    "ease-out": "cubic-bezier(0.23, 1, 0.32, 1)",
+    "ease-in-out": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "standard": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "spring-pop": "cubic-bezier(0.34, 1.56, 0.64, 1)"
+  },
+  "durations": {
+    "micro": [0.1, 0.2],
+    "entrance": [0.15, 0.35],
+    "scroll_reveal": [0.2, 0.4],
+    "video_crossfade": [0.4, 0.7]
+  },
+  "stagger": { "min": 0.03, "max": 0.06, "default": 0.04 },
+  "entrance": {
+    "translate_y_px": [4, 12],
+    "blur_px": [0, 0],
+    "note": "subtle fade + short rise; no blur, no drama — the UI appears, it doesn't perform"
+  },
+  "typography": {
+    "display": {
+      "suggested_fonts": ["Inter", "Geist", "IBM Plex Sans"],
+      "tracking": "neutral",
+      "leading": [1.05, 1.25],
+      "emphasis_technique": "weight (600/700) and hierarchy, not italics or color"
+    },
+    "body": {
+      "suggested_fonts": ["Inter", "Geist", "system-ui"],
+      "opacity_tiers": [1, 0.72, 0.56, 0.4]
+    }
+  },
+  "palette": {
+    "strategy": "semantic-multi",
+    "max_accent_hues": 4,
+    "families": {
+      "light-neutral": {
+        "background": ["#FFFFFF", "#F8FAFC", "#F1F5F9"],
+        "foreground": "#0F172A",
+        "accent_examples": ["#2563EB", "#16A34A", "#D97706", "#DC2626"]
+      },
+      "dark-slate": {
+        "background": ["#0B1120", "#0F172A", "#1E293B"],
+        "foreground": "#E2E8F0",
+        "accent_examples": ["#3B82F6", "#22C55E", "#F59E0B", "#EF4444"]
+      }
+    }
+  },
+  "layering": {
+    "content": 10,
+    "overlay": 20,
+    "nav": 30,
+    "note": "panels/drawers/toasts layer over content; there is no video canvas"
+  },
+  "radius": { "interactive": "rounded-md", "panel": "rounded-lg", "card": "rounded-xl" },
+  "dependencies": {
+    "allowed": [
+      "react", "react-dom", "typescript", "vite", "@vitejs/plugin-react",
+      "tailwindcss", "autoprefixer", "postcss",
+      "framer-motion", "motion", "lucide-react", "clsx", "tailwind-merge",
+      "@radix-ui/react-dialog", "@radix-ui/react-dropdown-menu",
+      "@radix-ui/react-tooltip", "@radix-ui/react-popover", "recharts"
+    ],
+    "forbidden": ["three", "@react-three/fiber", "@react-three/drei", "gsap", "jquery"],
+    "note": "Radix primitives + recharts are welcome for real product UI; heavy all-in-one kits still discouraged"
+  },
+  "video": {
+    "required_attrs": ["autoplay", "muted", "loop", "playsinline"],
+    "poster_required": true,
+    "note": "video is rare in product UI; rules apply only if a <video> is present"
+  },
+  "interaction": {
+    "press_scale": [0.95, 0.98],
+    "press_duration_ms": [80, 140],
+    "ui_max_duration_ms": 250,
+    "ban_ease_in": true,
+    "popover_origin_aware": true,
+    "gate_hover_pointer_fine": true,
+    "note": "fast feedback, origin-aware menus, press states on every control"
+  },
+  "lint": {
+    "weights": { "error": 15, "warning": 5, "info": 1 },
+    "disabled_rules": [],
+    "severity_overrides": {},
+    "note": "single-accent relaxed via max_accent_hues=4; negative-tracking rule (M12) off via tracking=neutral"
+  }
+}

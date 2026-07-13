@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Meterly — product-ui profile dogfood</title>
+<style>
+  /* ── product-ui design profile, embodied ──────────────────────────
+     Crisp SaaS dashboard: fast <250ms motion, ease-out, semantic accents,
+     press feedback, gated hover, reduced-motion. Lints 100/A+ under the
+     product-ui profile:  lint_motion.py --profile product-ui index.html   */
+  :root {
+    --ease: cubic-bezier(0.23, 1, 0.32, 1);      /* product-ui ease-out token */
+    --bg: #F8FAFC; --surface: #FFFFFF; --line: #E2E8F0;
+    --ink: #0F172A; --muted: #64748B;
+    --blue: #2563EB; --green: #16A34A; --amber: #D97706; --red: #DC2626;   /* 4 semantic accents */
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 15px/1.5 Inter, system-ui, -apple-system, sans-serif; }
+  .app { display: grid; grid-template-columns: 232px 1fr; min-height: 100vh; }
+
+  /* Sidebar (persistent nav; active item = moving indicator, no page motion) */
+  .side { background: var(--surface); border-right: 1px solid var(--line); padding: 20px 14px; }
+  .brand { display: flex; align-items: center; gap: 9px; font-weight: 700; padding: 6px 10px 18px; }
+  .dot { width: 22px; height: 22px; border-radius: 7px; background: var(--blue); }
+  .nav a { display: flex; align-items: center; gap: 10px; padding: 9px 10px; margin: 2px 0;
+           border-radius: 8px; color: var(--muted); text-decoration: none; font-weight: 500;
+           transition: color 140ms var(--ease), background-color 140ms var(--ease); }
+  .nav a[aria-current="page"] { color: var(--ink); background: #EFF4FF; }
+  .nav a:active { transform: scale(0.98); }
+  @media (hover: hover) and (pointer: fine) { .nav a:hover { color: var(--ink); background: #F1F5F9; } }
+
+  /* Topbar */
+  .main { display: flex; flex-direction: column; }
+  .top { display: flex; align-items: center; justify-content: space-between;
+         padding: 16px 28px; border-bottom: 1px solid var(--line); background: var(--surface); }
+  .top h1 { font-size: 18px; margin: 0; font-weight: 600; }
+  .btn { border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+         border-radius: 8px; padding: 8px 14px; font: inherit; font-weight: 600; cursor: pointer;
+         transition: transform 120ms var(--ease), background-color 120ms var(--ease); }
+  .btn:active { transform: scale(0.97); }
+  .btn.primary { background: var(--blue); color: #fff; border-color: var(--blue); }
+  @media (hover: hover) and (pointer: fine) {
+    .btn:hover { background: #F1F5F9; }
+    .btn.primary:hover { background: #1D4ED8; }
+  }
+
+  .content { padding: 28px; }
+
+  /* Stat cards — fast rise + stagger, press + gated hover-lift */
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  @media (max-width: 860px) { .grid { grid-template-columns: repeat(2, 1fr); } .app { grid-template-columns: 1fr; } .side { display: none; } }
+  .stat { text-align: left; background: var(--surface); border: 1px solid var(--line);
+          border-radius: 12px; padding: 18px; cursor: pointer;
+          animation: rise 0.22s var(--ease) backwards;
+          transition: transform 140ms var(--ease), box-shadow 140ms var(--ease); }
+  .stat:active { transform: scale(0.98); }
+  .stat:nth-child(1){animation-delay:0ms} .stat:nth-child(2){animation-delay:40ms}
+  .stat:nth-child(3){animation-delay:80ms} .stat:nth-child(4){animation-delay:120ms}
+  @media (hover: hover) and (pointer: fine) {
+    .stat:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgb(15 23 42 / 0.08); }
+  }
+  .stat .k { font-size: 13px; color: var(--muted); }
+  .stat .v { font-size: 26px; font-weight: 700; font-variant-numeric: tabular-nums; margin-top: 6px; }
+  .delta { font-size: 12px; font-weight: 600; }
+  .up { color: var(--green); } .down { color: var(--red); } .warn { color: var(--amber); }
+
+  /* Data table — rows stagger in on mount */
+  .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+           margin-top: 22px; overflow: hidden; animation: rise 0.24s var(--ease) backwards; animation-delay: 120ms; }
+  .panel h2 { font-size: 14px; margin: 0; padding: 15px 18px; border-bottom: 1px solid var(--line); }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: 12px 18px; font-size: 14px; }
+  th { color: var(--muted); font-weight: 500; font-size: 12px; border-bottom: 1px solid var(--line); }
+  tbody tr { border-bottom: 1px solid #F1F5F9; animation: rise 0.2s var(--ease) backwards;
+             transition: background-color 120ms var(--ease); }
+  tbody tr:nth-child(1){animation-delay:150ms} tbody tr:nth-child(2){animation-delay:185ms}
+  tbody tr:nth-child(3){animation-delay:220ms} tbody tr:nth-child(4){animation-delay:255ms}
+  @media (hover: hover) and (pointer: fine) { tbody tr:hover { background: #F8FAFC; } }
+  td .num { font-variant-numeric: tabular-nums; }
+  .pill { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+  .pill.ok { background: #DCFCE7; color: var(--green); }
+  .pill.pend { background: #FEF3C7; color: var(--amber); }
+  .pill.fail { background: #FEE2E2; color: var(--red); }
+
+  /* Interruptible toast (transition + starting-style, translateY by own height) */
+  .toast { position: fixed; right: 22px; bottom: 22px; background: var(--ink); color: #fff;
+           padding: 12px 16px; border-radius: 10px; font-size: 14px; box-shadow: 0 10px 30px rgb(15 23 42 / 0.25);
+           opacity: 1; transform: translateY(0);
+           transition: opacity 200ms var(--ease), transform 200ms var(--ease); }
+  @starting-style { .toast { opacity: 0; transform: translateY(100%); } }
+
+  @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  /* Reduced motion: keep opacity, drop movement */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+  <div class="app">
+    <aside class="side">
+      <div class="brand"><span class="dot" aria-hidden="true"></span> Meterly</div>
+      <nav class="nav" aria-label="Primary">
+        <a href="#" aria-current="page" aria-label="Overview">Overview</a>
+        <a href="#" aria-label="Analytics">Analytics</a>
+        <a href="#" aria-label="Customers">Customers</a>
+        <a href="#" aria-label="Billing">Billing</a>
+        <a href="#" aria-label="Settings">Settings</a>
+      </nav>
+    </aside>
+
+    <div class="main">
+      <header class="top">
+        <h1>Overview</h1>
+        <div>
+          <button class="btn" aria-label="Export data">Export</button>
+          <button class="btn primary" aria-label="Create report">New report</button>
+        </div>
+      </header>
+
+      <main class="content">
+        <section class="grid" aria-label="Key metrics">
+          <button class="stat" aria-label="Revenue 48.2 thousand dollars, up 12 percent">
+            <div class="k">Revenue</div><div class="v">$48.2k</div><span class="delta up">▲ 12%</span>
+          </button>
+          <button class="stat" aria-label="Active users 3,910, up 4 percent">
+            <div class="k">Active users</div><div class="v">3,910</div><span class="delta up">▲ 4%</span>
+          </button>
+          <button class="stat" aria-label="Churn 1.8 percent, needs attention">
+            <div class="k">Churn</div><div class="v">1.8%</div><span class="delta warn">◆ watch</span>
+          </button>
+          <button class="stat" aria-label="Refunds 312 dollars, down 2 percent">
+            <div class="k">Refunds</div><div class="v">$312</div><span class="delta down">▼ 2%</span>
+          </button>
+        </section>
+
+        <section class="panel" aria-label="Recent invoices">
+          <h2>Recent invoices</h2>
+          <table>
+            <thead><tr><th>Customer</th><th>Plan</th><th>Amount</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Northwind</td><td>Scale</td><td class="num">$1,200</td><td><span class="pill ok">Paid</span></td></tr>
+              <tr><td>Acme Co</td><td>Growth</td><td class="num">$480</td><td><span class="pill pend">Pending</span></td></tr>
+              <tr><td>Globex</td><td>Scale</td><td class="num">$1,200</td><td><span class="pill ok">Paid</span></td></tr>
+              <tr><td>Initech</td><td>Starter</td><td class="num">$96</td><td><span class="pill fail">Failed</span></td></tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="toast" role="status">Report generated · 4 invoices synced</div>
+</body>
+</html>

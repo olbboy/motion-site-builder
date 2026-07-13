@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "name": "editorial",
+    "version": "1.0.0",
+    "note": "Typography-first content/blog/docs: reading-optimized, generous whitespace, restrained scroll motion, light-friendly, serif or grotesk. No video/glass requirement."
+  },
+  "easings": {
+    "ease-out": "cubic-bezier(0.16, 1, 0.3, 1)",
+    "quint-out": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "ease-in-out": "cubic-bezier(0.65, 0, 0.35, 1)"
+  },
+  "durations": {
+    "micro": [0.15, 0.3],
+    "entrance": [0.4, 0.8],
+    "scroll_reveal": [0.5, 0.9],
+    "video_crossfade": [0.4, 0.7]
+  },
+  "stagger": { "min": 0.05, "max": 0.12, "default": 0.08 },
+  "entrance": {
+    "translate_y_px": [8, 20],
+    "blur_px": [0, 4],
+    "note": "gentle fade + rise as content enters the viewport; reading pace, never flashy"
+  },
+  "typography": {
+    "display": {
+      "suggested_fonts": ["Fraunces", "Newsreader", "Source Serif 4", "Playfair Display"],
+      "tracking": "neutral",
+      "leading": [1.05, 1.2],
+      "emphasis_technique": "italic serif, a drop-cap, or a thin rule — not color"
+    },
+    "body": {
+      "suggested_fonts": ["Newsreader", "Source Serif 4", "Literata", "Inter"],
+      "opacity_tiers": [1, 0.75, 0.6]
+    }
+  },
+  "palette": {
+    "strategy": "reading-neutral",
+    "max_accent_hues": 1,
+    "families": {
+      "paper": {
+        "background": ["#FBFBF9", "#FFFFFF", "#F5F4EF"],
+        "foreground": "#1A1A1A",
+        "accent_examples": ["#B4531F", "#1D4ED8"]
+      },
+      "ink-dark": {
+        "background": ["#14140F", "#1C1C17"],
+        "foreground": "#ECEAE1",
+        "accent_examples": ["#E0A96D"]
+      }
+    }
+  },
+  "layering": {
+    "content": 10,
+    "nav": 20,
+    "note": "flat document flow; a sticky header sits over the reading column"
+  },
+  "radius": { "interactive": "rounded-md", "panel": "rounded-lg", "card": "rounded-lg" },
+  "dependencies": {
+    "allowed": [
+      "react", "react-dom", "typescript", "vite", "@vitejs/plugin-react",
+      "tailwindcss", "@tailwindcss/typography", "autoprefixer", "postcss",
+      "framer-motion", "motion", "lucide-react", "clsx", "tailwind-merge"
+    ],
+    "forbidden": ["three", "@react-three/fiber", "@react-three/drei", "gsap", "bootstrap", "@mui/material", "antd", "daisyui", "jquery"],
+    "note": "@tailwindcss/typography (prose) is the star; keep the rest minimal"
+  },
+  "video": {
+    "required_attrs": ["autoplay", "muted", "loop", "playsinline"],
+    "poster_required": true,
+    "note": "video optional; rules apply only if present"
+  },
+  "interaction": {
+    "press_scale": [0.96, 0.99],
+    "press_duration_ms": [100, 160],
+    "ui_max_duration_ms": 300,
+    "ban_ease_in": true,
+    "popover_origin_aware": true,
+    "gate_hover_pointer_fine": true,
+    "note": "understated: link underlines, subtle press, footnote/citation popovers"
+  },
+  "lint": {
+    "weights": { "error": 15, "warning": 5, "info": 1 },
+    "disabled_rules": [],
+    "severity_overrides": {},
+    "note": "single accent kept; motion restrained by design"
+  }
+}

@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  engine:
+    name: Lint engine self-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Validate design tokens JSON
+        run: python3 -c "import json; json.load(open('skills/motion-site-builder/config/motion-tokens.json'))"
+      - name: Linter self-test
+        run: python3 skills/motion-site-builder/scripts/lint_motion.py --self-test
+      - name: Rebuild corpus index
+        run: python3 skills/motion-site-builder/scripts/build_index.py prompts /tmp/prompt-index.json
+      - name: Index freshness (committed index matches corpus count)
+        run: |
+          python3 - <<'EOF'
+          import json
+          fresh = json.load(open('/tmp/prompt-index.json'))
+          committed = json.load(open('skills/motion-site-builder/data/prompt-index.json'))
+          assert fresh['meta']['count'] == committed['meta']['count'], (
+              f"Index stale: corpus has {fresh['meta']['count']} prompts, "
+              f"committed index has {committed['meta']['count']}. "
+              "Run scripts/build_index.py and commit data/prompt-index.json.")
+          print(f"Index fresh: {committed['meta']['count']} prompts")
+          EOF
+      - name: Site lint (motion rules on landing page sources)
+        run: |
+          set -e
+          for f in site/src/index.css site/src/components/*.tsx site/src/App.tsx site/package.json; do
+            python3 skills/motion-site-builder/scripts/lint_motion.py "$f" > /dev/null
+          done
+          echo "site sources pass motion lint (no errors)"
+      - name: MCP server smoke test
+        run: |
+          printf '%s\n' \
+            '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{}}' \
+            '{"jsonrpc":"2.0","id":2,"method":"tools/list"}' \
+            | python3 skills/motion-site-builder/scripts/server.py \
+            | python3 -c "import json,sys; lines=[json.loads(l) for l in sys.stdin]; assert len(lines)==2 and len(lines[1]['result']['tools'])==8; print('MCP OK: 8 tools')"
+
+  site:
+    name: Landing page build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - name: Install and build
+        working-directory: site
+        run: |
+          npm ci
+          npm run build
