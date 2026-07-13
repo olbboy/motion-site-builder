@@ -35,6 +35,11 @@ const ITEMS: Item[] = [
   { id: 'pixeljam', title: 'PixelJam', tagline: 'Arcade-fest event', profile: 'playful', prompt: 'pixeljam-arcade-fest.md', url: 'https://msb-pixeljam.lovable.app/' },
   { id: 'arcadia', title: 'Arcadia Goods', tagline: 'Outdoor-gear storefront', profile: 'ecommerce', prompt: 'arcadia-goods-storefront.md', url: 'https://msb-arcadia.lovable.app/' },
   { id: 'maison', title: 'Maison Ondes', tagline: 'Boutique fragrance page', profile: 'ecommerce', prompt: 'maison-ondes-product-page.md', url: 'https://msb-maison.lovable.app/' },
+  { id: 'aurelia', title: 'Aurelia', tagline: 'Haute-horlogerie waitlist', profile: 'cinematic', prompt: 'aurelia-landing.md', url: 'https://aurelia-one-a-year.lovable.app/' },
+  { id: 'relay', title: 'Relay', tagline: 'On-call incident console', profile: 'product-ui', prompt: 'relay-incident-console.md', url: 'https://incident-whisper-44.lovable.app/' },
+  { id: 'praxis', title: 'Praxis', tagline: 'Developer documentation', profile: 'editorial', prompt: 'praxis-docs-page.md', url: 'https://praxis-docu-shine.lovable.app/' },
+  { id: 'bloop', title: 'Bloop', tagline: 'Analog synth plugin', profile: 'playful', prompt: 'bloop-synth-plugin.md', url: 'https://bloop-neon-groove.lovable.app/' },
+  { id: 'glyphery', title: 'Glyphery', tagline: 'Digital type foundry', profile: 'ecommerce', prompt: 'glyphery-type-foundry-shop.md', url: 'https://glyphery-type-shop.lovable.app/' },
 ]
 
 const FILTERS: Array<{ key: Profile | 'all'; label: string }> = [
