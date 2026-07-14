@@ -75,7 +75,7 @@
       "name": "Aphelion",
       "category": "Private orbital travel",
       "archetype": "minimal-hero",
-      "size_chars": 4573,
+      "size_chars": 4643,
       "stack": [
         "react",
         "tailwind",
@@ -88,6 +88,7 @@
         "Inter"
       ],
       "techniques": [
+        "crossfade-loop",
         "custom-easing",
         "pill-ui",
         "raf-lerp",
@@ -1051,7 +1052,7 @@
       "name": "Motion Site Builder (official dogfood)",
       "category": "Product landing",
       "archetype": "full-landing",
-      "size_chars": 15776,
+      "size_chars": 16020,
       "stack": [
         "react",
         "tailwind",

@@ -16,7 +16,7 @@ const STEPS = [
   },
   {
     title: 'Build',
-    body: 'Adapt the nearest of 92 reference prompts with verbatim glass, glow, and easing primitives — never paraphrased.',
+    body: 'Adapt the nearest of 54 reference prompts with measured, profile-aware primitives — never vague approximations.',
   },
   {
     title: 'Validate',

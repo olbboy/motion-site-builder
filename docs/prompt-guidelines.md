@@ -43,7 +43,7 @@ Every submission must include:
 
 ### 5. Legal hygiene
 
-- Media URLs: your own assets or `{YOUR_VIDEO_URL}` placeholders. No hotlinks to assets you don't control.
+- Media must be either your own asset, an explicit placeholder such as `{YOUR_VIDEO_URL}`, or a licensed source-page reference paired with a local asset target. Never ship a third-party CDN hotlink; verify the source's current license before downloading.
 - No recreations of existing brands (names, logos, trade dress, mascots, or exact product UIs). Use original, fictional brands and original copy.
 - Fonts must be open-licensed (Google Fonts / OFL). No hotlinking commercial fonts from font-piracy mirrors.
 
@@ -59,8 +59,8 @@ Every submission must include:
 # 1. add your file, then re-index
 python3 skills/motion-site-builder/scripts/build_index.py
 
-# 2. sanity-check any embedded CSS/JSX
-python3 skills/motion-site-builder/scripts/lint_motion.py <snippet-file>
+# 2. lint under the prompt's intended design profile
+python3 skills/motion-site-builder/scripts/lint_motion.py --profile <profile> <snippet-file>
 
 # 3. add a row to prompts/README.md, open a PR
 ```

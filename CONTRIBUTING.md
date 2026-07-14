@@ -12,7 +12,7 @@ The library grows one great prompt at a time.
 - Opens with ONE imperative sentence stating what to build + exact stack.
 - **Absolute values only** — full Tailwind class strings, hex colors, px, seconds, easing curves, copy verbatim. Adjectives without values ("elegant", "smooth") are spec bugs.
 - Includes `prefers-reduced-motion` handling and ARIA on interactive elements (we hold a higher bar than the original corpus).
-- Media URLs must be assets you have rights to (or clearly marked placeholders like `{YOUR_VIDEO_URL}`).
+- Media must be owned, explicitly placeholder-marked, or documented by a licensed source page plus a local asset target. Do not submit third-party CDN hotlinks.
 - No recreations of existing brands' trade dress.
 
 **Then:**
@@ -21,8 +21,8 @@ The library grows one great prompt at a time.
 # re-index the corpus (your prompt becomes retrievable by the skill)
 python3 skills/motion-site-builder/scripts/build_index.py
 
-# lint any embedded CSS/JSX blocks
-python3 skills/motion-site-builder/scripts/lint_motion.py path/to/snippet.css
+# lint embedded CSS/JSX under the prompt's intended profile
+python3 skills/motion-site-builder/scripts/lint_motion.py --profile <profile> path/to/snippet.css
 ```
 
 Add a row to the table in `prompts/README.md`, then open a PR using the prompt-submission template.
@@ -31,7 +31,7 @@ Add a row to the table in `prompts/README.md`, then open a PR using the prompt-s
 
 The skill lives in `skills/motion-site-builder/`. Ground rules:
 
-- **Taste never goes in code.** Numbers, whitelists, and severities belong in `config/motion-tokens.json`. Engine scripts read config.
+- **Taste never goes in code.** Numbers, whitelists, and severities belong in the active profile config: `config/motion-tokens.json` for cinematic or `config/profiles/*.json` for the other four languages. Engine scripts read config.
 - **New lint rule** = one function in `scripts/lint_motion.py` with the `@rule("M13", WARNING)` decorator + a case in the self-test fixtures. Rules must be disable-able via config.
 - **New technique tag** for the index = one regex line in `TECHNIQUE_SIGNALS` (`scripts/build_index.py`).
 - Zero runtime dependencies is a feature — the linter and MCP server must run on stock Python 3.9+.
@@ -44,11 +44,11 @@ python3 skills/motion-site-builder/scripts/build_index.py               # must s
 python3 -c "import json; json.load(open('skills/motion-site-builder/config/motion-tokens.json'))"
 ```
 
-CI runs exactly these checks.
+CI also checks index freshness, lints and builds the landing page, and performs an eight-tool MCP handshake.
 
 ## 3. Improve the Docs
 
-Docs live in `docs/` and `skills/motion-site-builder/references/`. Corrections, clearer examples, and translations are welcome. Keep reference docs normative ("do X") rather than narrative.
+Docs live in `docs/`, the three skill directories, and `skills/motion-site-builder/references/`. Corrections, clearer examples, and translations are welcome. Keep reference docs normative ("do X") rather than narrative, and preserve the distinction between build, strict review, and read-only audit/explicit execution.
 
 ## Pull Request Conventions
 

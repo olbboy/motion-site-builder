@@ -1,46 +1,78 @@
 # motion-site-builder
 
-An agent skill for building **cinematic, motion-driven websites** — heroes, landing pages, mobile-app showcases — with a validation loop that turns design taste into lintable rules.
+An agent skill for building publication-quality motion UI across **five design profiles**:
 
-Distilled from a corpus of 83 production prompts. Ships with:
+- `cinematic` — video/image-first marketing, glass, serif, one accent
+- `product-ui` — fast dashboards, SaaS, admin, settings
+- `editorial` — typography-first articles, docs, and changelogs
+- `playful` — expressive campaigns, events, and consumer UI
+- `ecommerce` — imagery-first storefronts, catalogs, and product pages
 
-- **A 15-step workflow** (Plan → Build → Validate) in [SKILL.md](SKILL.md)
-- **A motion linter** — 12 config-driven rules (reduced-motion, layout-prop animation, accent budget, easing tokens, video hygiene…) with score + grade
-- **An MCP server** (zero dependencies, stdio) exposing 6 tools: validate, tokens, templates, pattern suggestion, corpus retrieval
-- **A tagged corpus index** — find the nearest reference prompt and adapt it instead of generating from scratch
-- **Two deliverable modes** — working code (React + Vite + Tailwind) or a portable one-shot prompt for Bolt/Lovable/v0
+It converts a brief into a profile-aware **Plan → Build → Validate** workflow and returns either working code or a portable one-shot prompt. It is the build member of the larger motion-site suite; [`review-motion`](../review-motion/SKILL.md) reviews a diff/component, while [`improve-motion`](../improve-motion/SKILL.md) audits existing codebases and writes executable improvement plans.
+
+## What ships
+
+- **54 original reference prompts** in [`../../prompts/`](../../prompts/)
+- **A 15-step workflow** with runtime smoke validation in [SKILL.md](SKILL.md)
+- **Two deliverable modes** — working React/Vite/Tailwind code or portable Markdown for Bolt/Lovable/v0/Cursor
+- **17 profile-aware lint rules** (M01–M12 macro composition, M13–M17 interaction craft) with findings, score, and grade
+- **8 zero-dependency MCP tools** for profiles, tokens, primitives, patterns, easing rationale, retrieval, and validation
+- **24 verbatim catalog primitives** shared by cinematic and non-cinematic profiles
+- **A generated corpus index** for retrieval by archetype, technique, stack, font, category, and palette signals
 
 ## Layout
 
-```
-SKILL.md                     workflow, matrices, forbidden list (agent entry point)
+```text
+SKILL.md                         workflow, matrices, forbidden list
+README.md                        install, customize, extend
 references/
-  motion-design-dna.md       full design-language guidelines
-  component-catalog.md       verbatim primitives (liquid-glass, crossfade loop, …)
-  prompt-writing-guide.md    portable-prompt formula
-config/motion-tokens.json    ALL taste lives here — edit to re-skin
-data/prompt-index.json       generated corpus index
+  design-profiles.md             five languages and selection rules
+  motion-design-dna.md           cinematic macro composition
+  interaction-standards.md       universal micro-motion values
+  animation-vocabulary.md        precise effect terminology
+  component-catalog.md           24 verbatim primitives
+  prompt-writing-guide.md        portable-prompt formula
+config/
+  motion-tokens.json             cinematic defaults
+  profiles/*.json                product-ui · editorial · playful · ecommerce
+data/prompt-index.json           generated 54-prompt index
 scripts/
-  lint_motion.py             rule engine (CLI + library)
-  build_index.py             corpus scanner → index
-  server.py                  MCP stdio server
+  lint_motion.py                 CLI/library rule engine
+  build_index.py                 prompt scanner → index
+  server.py                      minimal MCP stdio server
 ```
+
+## How the builder works
+
+1. Pick the profile first; profile controls tempo, easing, palette, typography, dependencies, and lint severity.
+2. Plan the archetype, palette, scroll narrative, motion frequency budget, and assets before code.
+3. Retrieve the nearest prompt and request exact primitives/tokens rather than inventing near-matches.
+4. Build with explicit layers, GPU-safe properties, profile-correct interaction budgets, reduced-motion, and ARIA.
+5. Lint every motion-bearing file, fix findings, then smoke-test runtime behavior and reduced motion.
+
+Code mode defaults to React 18 + Vite + TypeScript + Tailwind + lucide-react. Profile configs allow Radix/Recharts for product UI, Embla for ecommerce, and Framer Motion only when the motion requires it. Prompt mode writes an absolute-value specification that another builder can implement without guessing.
 
 ## Install
 
-The skill works from any of these locations — pick one:
+From the repository root, install only the builder in Claude Code:
 
 ```bash
-# 1. Per-project (this repo already does this via symlink)
-ln -s ../../skills/motion-site-builder .claude/skills/motion-site-builder
-
-# 2. Global (all projects)
 ln -s "$(pwd)/skills/motion-site-builder" ~/.claude/skills/motion-site-builder
-
-# 3. Copy standalone into any agent runtime that reads SKILL.md
 ```
 
-Optional MCP server (enables `motion_*` tools):
+Or install the full build/review/improve suite in Claude Code:
+
+```bash
+for s in motion-site-builder review-motion improve-motion; do
+  ln -s "$(pwd)/skills/$s" ~/.claude/skills/$s
+done
+```
+
+For another agent runtime, copy or link the skill directories using that runtime's `SKILL.md` discovery convention.
+
+## Optional MCP server
+
+The server runs on stock Python and exposes all eight `motion_*` tools:
 
 ```json
 {
@@ -53,26 +85,48 @@ Optional MCP server (enables `motion_*` tools):
 }
 ```
 
-Without MCP, everything still works: the agent reads `config/motion-tokens.json` directly and runs `python3 scripts/lint_motion.py <file>`.
+This repository includes a generic [`.mcp.json`](../../.mcp.json) example. Use the equivalent MCP-server fields in clients with a different config format; a client may require a reload or new session before newly configured tools appear.
+
+Without MCP, the workflow still works: read the active profile JSON directly, search the prompt index/catalog, and run the CLI linter.
 
 ## Customize (the whole point)
 
-**No brand lock-in.** The engine never hardcodes taste — it reads `config/motion-tokens.json`:
+**No brand lock-in.** Taste values live in the active profile JSON, not in engine code:
 
 | Want to… | Edit |
-|:---|:---|
-| Change signature easings / durations / stagger | `easings`, `durations`, `stagger` |
-| Use your own palette families / accent budget | `palette` |
-| Allow another library (e.g. GSAP) | `dependencies.allowed` / remove from `forbidden` |
-| Relax or mute a lint rule | `lint.disabled_rules`, `lint.severity_overrides` |
-| Swap the whole design language | edit the JSON, then update `references/*.md` prose to match |
+|---|---|
+| Change cinematic defaults | `config/motion-tokens.json` |
+| Change product-ui/editorial/playful/ecommerce | `config/profiles/<profile>.json` |
+| Tune easing, duration, stagger | `easings`, `durations`, `stagger` |
+| Change palette families or accent budget | `palette` |
+| Change typography or radii | `typography`, `radius` |
+| Allow or forbid a dependency | `dependencies.allowed`, `dependencies.forbidden` |
+| Relax or raise a lint rule | `lint.disabled_rules`, `lint.severity_overrides` |
+
+Every profile uses the same schema. To add a sixth language, copy the closest profile JSON, change its values, and run `lint_motion.py --self-test`; profile discovery is automatic.
 
 ## Extend
 
-- **Add prompts to the corpus**: drop `.md` files into your prompts dir, run `python3 scripts/build_index.py [prompts_dir]` — they become retrievable via `motion_find_reference`. Technique tags are regex signals in `build_index.py` (`TECHNIQUE_SIGNALS`) — add a line to tag a new technique.
-- **Add a lint rule**: one function in `lint_motion.py` with the `@rule("M13", WARNING)` decorator. It automatically appears in both CLI and MCP output, and is config-disable-able.
-- **Verify the engine**: `python3 scripts/lint_motion.py --self-test`.
+- **Add a prompt**: add a `.md` file under `prompts/`, add its catalog row, then run `python3 scripts/build_index.py [prompts_dir]`.
+- **Add a technique signal**: add one regex entry to `TECHNIQUE_SIGNALS` in `build_index.py` and rebuild the index.
+- **Add a primitive**: add a numbered `## N. name` section to `component-catalog.md`; `motion_get_template` discovers it from the heading.
+- **Add a lint rule**: register one function with `@rule("MNN", SEVERITY)`, add self-test coverage, and keep values in profile config.
+- **Add a pattern intent**: extend the matching profile's pattern matrix and its fuzzy-keyword map in `server.py`.
 
-## License note
+## Verify
 
-The bundled prompt corpus is for learning/adaptation — replace video asset URLs with your own licensed media. Replica-style prompts (recreating existing brands) are for study only.
+```bash
+# Validate every profile schema and linter fixture
+python3 scripts/lint_motion.py --self-test
+
+# List profiles or lint existing code under one
+python3 scripts/lint_motion.py --list-profiles
+python3 scripts/lint_motion.py --profile editorial path/to/article.tsx
+
+# Rebuild retrieval data after prompt changes
+python3 scripts/build_index.py
+```
+
+## License and media
+
+The prompt corpus is original and designed for adaptation, not brand replication. Supply media you own or can license. Most prompts use explicit placeholders; curated source-page links must resolve to local downloaded assets rather than third-party CDN hotlinks.

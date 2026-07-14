@@ -20,8 +20,8 @@ export default function Hero() {
         <em className="italic text-accent">designed</em>, not generated.
       </h1>
       <p className="animate-fade-up delay-2 mt-6 max-w-lg text-lg leading-relaxed text-white/70 [text-wrap:balance]">
-        A retrieval-driven engine and 17-rule linter that plan, build, and grade
-        motion websites — from one prompt.
+        Build new motion UI, review a change, or turn an existing app into
+        executable improvement plans — all grounded by one 17-rule linter.
       </p>
       <div className="animate-fade-up delay-3 mt-8 flex flex-col gap-4 sm:flex-row">
         <a

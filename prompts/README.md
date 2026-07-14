@@ -1,8 +1,8 @@
 # Prompt Catalog
 
-One markdown file per prompt, engineered for one-shot generation in AI builders (Bolt, Lovable, v0, Cursor). Every prompt in this library is **original**, authored from the project's own [design profiles](../skills/motion-site-builder/references/design-profiles.md) and motion DNA — no brand replicas, and no hardcoded third-party media.
+One markdown file per prompt, engineered for one-shot generation in AI builders (Bolt, Lovable, v0, Cursor). Every prompt in this library is **original**, authored from the project's own [design profiles](../skills/motion-site-builder/references/design-profiles.md) and motion DNA — no brand replicas and no third-party asset hotlinks.
 
-> **Bring your own media.** Prompts reference media as placeholders (`{YOUR_VIDEO_URL}`, `{YOUR_POSTER_URL}`). Supply footage/images you have rights to (your own, or royalty-free sources such as Pexels/Coverr/Unsplash under their licenses). Fonts are all open-licensed (Google Fonts / OFL). Contributing? Read [docs/prompt-guidelines.md](../docs/prompt-guidelines.md).
+> **Bring your own media.** Most prompts use placeholders (`{YOUR_VIDEO_URL}`, `{YOUR_POSTER_URL}`). The Vietnam collection instead records a Pexels source page and a stable local asset target; download the file yourself and confirm its current license rather than hotlinking a CDN. Image binaries are not bundled. Fonts are open-licensed (Google Fonts / OFL). Contributing? Read [docs/prompt-guidelines.md](../docs/prompt-guidelines.md).
 
 Rows marked ⭐ are the **profile exemplars** the skill retrieves as references. Every prompt lints 100/A+ under its profile (`MOTION_PROFILE=<profile>`).
 
@@ -104,4 +104,4 @@ Twenty original prompts across all five profiles, each paired with one landscape
 
 ## Usage
 
-Copy an entire file into your builder, then change only: brand name, headline copy, accent color, and the media placeholders. The design *patterns* (glass surfaces, signature easing `cubic-bezier(0.16, 1, 0.3, 1)`, staggered entrances) are enforced by the [motion linter](../skills/motion-site-builder/scripts/lint_motion.py).
+Copy an entire file into your builder, then adapt the brand, copy, profile-specific tokens, and explicit media placeholder/local target. Keep its measured motion and accessibility requirements intact; the [motion linter](../skills/motion-site-builder/scripts/lint_motion.py) checks the result against the selected profile.

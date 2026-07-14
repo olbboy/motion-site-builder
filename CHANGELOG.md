@@ -4,11 +4,12 @@ All notable changes to this project are documented here. Format follows [Keep a 
 
 ## [Unreleased]
 
-### Changed — clean-room prompt rebuild
+### Changed — clean-room prompt rebuild and expansion
 
-- **The prompt library is now 100% original.** Removed 82 prompts that were inherited from a third party (and every hardcoded third-party asset: AI-generated videos/images, source-site image hotlinks, pirated commercial fonts, and brand-replica CDNs). Authored **4 new original cinematic prompts** (Halcyon, Aphelion, Monolith, Verdant) and retained the project's own clean, dogfooded prompts (the 8 profile exemplars + the official landing prompt), with SkyElite's media reference swapped to a placeholder. The library is now **14 original prompts**, all MIT.
-- **Bring-your-own-media by default** — prompts reference `{YOUR_VIDEO_URL}` / `{YOUR_POSTER_URL}` placeholders; all fonts are open-licensed (Google Fonts / OFL). No brand replicas.
-- Relicensed: removed the third-party provenance note from `LICENSE`; refreshed `README`, `prompts/README`, `docs/`, and the landing marquee to match the original library.
+- **The prompt library is now 100% original.** Removed 82 prompts that were inherited from a third party and rebuilt from the project's own design profiles. The clean-room library first reached 14 prompts, then expanded with 20 general-purpose prompts and a 20-prompt Vietnam landscape collection. The current library contains **54 original prompts**, all MIT and linted under their intended profile.
+- **Bring-your-own-media by default** — most prompts use `{YOUR_VIDEO_URL}` / `{YOUR_POSTER_URL}` placeholders. The Vietnam collection records Pexels source pages, photographer provenance, crop guidance, and stable local asset targets; no third-party CDN assets or image binaries are shipped. All fonts are open-licensed (Google Fonts / OFL). No brand replicas.
+- **Documentation now covers the full suite** — generating new interfaces, strict change review, whole-codebase audit and planning, explicit plan execution/reconciliation, standalone linting, MCP guidance, and five-profile customization.
+- Relicensed: removed the third-party provenance note from `LICENSE`; refreshed `README`, prompt/docs/community guidance, and landing copy to match the original library.
 
 ## [1.0.0] — 2026-07-13
 

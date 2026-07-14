@@ -23,8 +23,8 @@ const SKILLS = [
   {
     icon: Sparkles,
     name: 'improve-motion',
-    tag: 'audit',
-    body: 'Audit a whole codebase and hand back self-contained fix plans a cheaper model can execute — each scoped to one file and rule.',
+    tag: 'improve',
+    body: 'Audit a whole codebase read-only, produce self-contained fix plans, then explicitly execute and reconcile the plans you select.',
     invoke: '"Improve the animations in this app"',
     href: `${REPO}/improve-motion`,
   },
@@ -39,7 +39,7 @@ export default function SkillsSuite() {
           One engine. <em className="italic text-accent">Three</em> skills.
         </h2>
         <p className="mb-14 max-w-xl text-white/60">
-          Build, review, and audit — sharing one linter, one token set, one standard. Method skills,
+          Build, review, and improve — sharing one linter, one token set, one standard. Method skills,
           not copies.
         </p>
       </Reveal>

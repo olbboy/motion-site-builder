@@ -1,6 +1,6 @@
 # Motion Design DNA — Full Guidelines
 
-Normative design language distilled from a corpus of 83 production prompts. Statistics cited as (n%) are corpus frequencies — they justify each rule empirically.
+Normative cinematic design language distilled from the project's original 83-prompt analysis corpus. Statistics cited as (n%) are historical corpus frequencies — they explain the empirical origin of these cinematic defaults, not the size or composition of the current 54-prompt library.
 
 ## 1. Philosophy — Cinematic Minimalism
 

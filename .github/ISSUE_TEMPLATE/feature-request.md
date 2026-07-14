@@ -16,5 +16,6 @@ labels: enhancement
 
 ## Config or code?
 
-<!-- Taste values (numbers, whitelists, severities) belong in config/motion-tokens.json.
-     Does your proposal fit the existing config schema, extend it, or need engine code? -->
+<!-- Taste values (numbers, whitelists, severities) belong in the relevant profile config:
+     config/motion-tokens.json or config/profiles/*.json. Does your proposal fit the
+     shared schema, extend it, or need engine code? -->

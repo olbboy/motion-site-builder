@@ -14,8 +14,11 @@ labels: bug
 - [ ] Linter (`lint_motion.py`)
 - [ ] Index builder (`build_index.py`)
 - [ ] MCP server (`server.py`)
-- [ ] Skill workflow (`SKILL.md` / references)
-- [ ] Config (`motion-tokens.json`)
+- [ ] Builder skill (`skills/motion-site-builder/`)
+- [ ] Review skill (`skills/review-motion/`)
+- [ ] Improve skill (`skills/improve-motion/`)
+- [ ] Design profile config (`motion-tokens.json` / `config/profiles/*.json`)
+- [ ] Landing page (`site/`)
 
 ## Reproduce
 

@@ -9,7 +9,7 @@ const TOOLS = [
   { name: 'motion_suggest_pattern', desc: 'the right motion pattern for an intent' },
   { name: 'motion_easing_rationale', desc: 'which curve, how fast, and why' },
   { name: 'motion_get_template', desc: 'verbatim primitives — glass, glow, keyframes' },
-  { name: 'motion_find_reference', desc: 'nearest of 92 corpus prompts' },
+  { name: 'motion_find_reference', desc: 'nearest of 54 corpus prompts' },
   { name: 'motion_validate', desc: 'lint a code string → score + grade' },
   { name: 'motion_validate_file', desc: 'lint a file on disk' },
 ]

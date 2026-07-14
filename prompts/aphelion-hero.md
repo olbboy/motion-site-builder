@@ -39,7 +39,7 @@ GLOBAL CSS (paste verbatim into `/src/styles/theme.css`)
 VIDEO BACKGROUND (z-0, seamless fade loop)
 - `<video autoPlay muted playsInline poster="{YOUR_POSTER_URL}" aria-hidden="true">` — className `absolute inset-0 h-full w-full object-cover`
 - src: `{YOUR_VIDEO_URL}` — supply your own licensed or royalty-free footage (a slow orbital / cloud-layer / starfield drift suits the brand); do not hotlink third-party media
-- Seamless fade loop via React `useEffect` + `useRef`: `requestAnimationFrame` monitors `currentTime`/`duration`; fade opacity 0→1 over 0.5s at start, 1→0 over 0.5s before end; on `ended` set opacity 0, wait 100ms, reset `currentTime = 0`, then `play()`. (No `loop` attribute — the handler drives the loop.)
+- Seamless crossfade loop via React `useEffect` + `useRef`: attach a `timeupdate` listener; when `duration - currentTime <= 0.5`, start one guarded `requestAnimationFrame` fade from opacity 1→0, while the next cycle fades 0→1 over its first 0.5s; on `ended` set opacity 0, wait 100ms, reset `currentTime = 0`, then `play()`. (No `loop` attribute — the handlers drive the loop.)
 - Gradient overlay above video (z-[1]): `absolute inset-0 bg-gradient-to-b from-[#051A24]/70 via-transparent to-[#051A24]`
 
 NAVBAR (z-20)

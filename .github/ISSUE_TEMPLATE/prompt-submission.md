@@ -13,13 +13,21 @@ labels: prompt
 
 - [ ] Minimal Hero
 - [ ] Full Landing Page
-- [ ] Design Replica (study-only)
+- [ ] Design-system adaptation (original brand only)
 - [ ] Mobile App Showcase
+
+## Design profile
+
+- [ ] Cinematic
+- [ ] Product UI
+- [ ] Editorial
+- [ ] Playful
+- [ ] Ecommerce
 
 ## Prompt draft or link
 
 <!-- Paste the prompt draft, or link a gist. Must follow docs/prompt-guidelines.md:
-     absolute values, verbatim copy, reduced-motion, ARIA, owned/placeholder media URLs. -->
+     absolute values, verbatim copy, reduced-motion, ARIA, and owned/placeholder/local-target media. -->
 
 ## Tested on
 

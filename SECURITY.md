@@ -17,9 +17,10 @@ Realistic concerns we care about:
 - A supply-chain issue in the landing page under `site/` (its npm
   dependencies), even though it is a static demo.
 
-Out of scope: the aesthetic quality of generated sites, third-party media URLs
-referenced by prompts (always replace them with assets you have rights to), and
-issues in AI builders (Bolt, Lovable, v0, Cursor) that consume the prompts.
+Out of scope: the aesthetic quality of generated sites, licensed media source
+pages recorded for provenance (direct third-party asset hotlinks are not
+shipped; downloaded files remain the user's responsibility), and issues in AI
+builders (Bolt, Lovable, v0, Cursor) that consume the prompts.
 
 ## Reporting a Vulnerability
 
