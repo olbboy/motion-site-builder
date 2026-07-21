@@ -59,9 +59,10 @@ Rules:
 - **Stagger 0.08–0.2s** between siblings, in narrative order: badge → headline → subtext → CTA → footer.
 - Signature easings: expo-out `cubic-bezier(0.16,1,0.3,1)`, quint-out `cubic-bezier(0.22,1,0.36,1)` (22% of corpus); spring `cubic-bezier(0.34,1.56,0.64,1)` for pops/hover only.
 
-### Scroll — two schools, pick ONE per page
+### Scroll — three schools, pick ONE per page
 1. **Framer Motion** (31%): `useScroll` + `useTransform` for parallax; `whileInView` with `once: true` for reveals.
 2. **Hand-rolled rAF + lerp** (24%): `current += (target − current) * 0.08..0.12`, applied via `translate3d`, `will-change: transform`. Buttery for parallax/marquee.
+3. **CSS scroll-driven animations** (`animation-timeline: view()/scroll()`): zero-JS, off-main-thread reveals and progress — strongest for simple reveals on content pages. Progressive enhancement only: `@supports`-gated with a static fallback. Full patterns: `modern-css-motion.md`. When the target project already runs GSAP, its ScrollTrigger *is* the school — see `gsap-interop.md`; never stack a second scroll library on top.
 
 ### Recurring patterns
 - Sticky-stack cards: `targetScale = 1 − (total − 1 − index) * 0.03`.
@@ -69,6 +70,9 @@ Rules:
 - Scroll-bound marquee, magnetic cursor, hover `scale-[1.03]`.
 - Seamless video loop: JS crossfade (rAF; start fading ~0.55s before clip end, 500ms fade, guard flag against re-trigger). Never CSS transitions on `<video>`.
 - App gating: wait for `loadeddata` + `document.fonts.ready` + 5s safety timeout before enabling entrance class.
+
+### Choreography (multi-element scenes)
+When several elements move, the composition rules in `choreography.md` apply: one hero motion per moment, ≤ ⅓ of elements active at once, staged focus (supporting elements first, hero 100–200ms later), follow-through offsets, exits 30–50% shorter than entrances, and direction that matches meaning (rise = arrival, sink = dismissal).
 
 ### Performance rules (hard)
 - Animate ONLY `transform`, `opacity`, `filter`.

@@ -1,0 +1,19 @@
+# Motion Site Builder — Skill Index for AI Agents
+
+Use this file to decide which skill to load. Each skill lives in a directory of the same name under skills/ and contains SKILL.md. The three skills share one engine: five profile configs (`skills/motion-site-builder/config/`), the 20-rule motion linter (`skills/motion-site-builder/scripts/lint_motion.py`), the consistency audit (`skills/motion-site-builder/scripts/audit_consistency.py`), and the builder's reference catalogs. Install `motion-site-builder` alongside `review-motion` or `improve-motion`; the method skills deliberately do not duplicate the engine.
+
+Pick by job: BUILD new UI → motion-site-builder · JUDGE a diff/component → review-motion · AUDIT a whole codebase into plans → improve-motion.
+
+## Skills
+
+motion-site-builder
+  Build polished, motion-driven web UI across five design profiles — cinematic (video-first, glass, serif; default), product-ui (SaaS/dashboard), editorial (blog/docs), playful (bold/maximalist), ecommerce (product grid) — or derive a custom profile from user references. 15-step Plan → Build → Validate workflow; outputs working React+Vite+Tailwind code or a portable one-shot prompt for Bolt/Lovable/v0.
+  Triggers: build hero, landing page, motion UI, cinematic site, glassmorphism, video background, dashboard UI, SaaS app, blog site, editorial layout, e-commerce store, product grid, playful site, motion prompt, lint motion, validate motion, suggest motion pattern, design profile.
+
+review-motion
+  Review motion & animation code in a DIFF or component against a high craft bar: runs the 20-rule linter, then senior design-engineer judgment (frequency, interruptibility, origin, cohesion). Outputs a Before/After findings table and an explicit Block/Approve verdict. Does not build (motion-site-builder) or audit whole codebases (improve-motion).
+  Triggers: review my animation, review the motion, is this animation good, check this transition, motion review, critique this animation, review hero motion.
+
+improve-motion
+  Survey a codebase's motion as a senior advisor: recon → 8-category audit (with cross-file consistency inventory) → prioritized findings → self-contained implementation plans any executor can run. Read-only on source; `execute <plan>` dispatches an executor and reviews the diff. Handles codebases using CSS, Framer Motion, GSAP, or WebGL.
+  Triggers: improve the animations, audit the motion, make it feel better, make this feel premium, motion roadmap, why does this feel cheap, fix the animations, motion audit.

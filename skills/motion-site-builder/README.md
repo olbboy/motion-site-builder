@@ -15,7 +15,7 @@ It converts a brief into a profile-aware **Plan → Build → Validate** workflo
 - **54 original reference prompts** in [`../../prompts/`](../../prompts/)
 - **A 15-step workflow** with runtime smoke validation in [SKILL.md](SKILL.md)
 - **Two deliverable modes** — working React/Vite/Tailwind code or portable Markdown for Bolt/Lovable/v0/Cursor
-- **17 profile-aware lint rules** (M01–M12 macro composition, M13–M17 interaction craft) with findings, score, and grade
+- **20 profile-aware lint rules** (M01–M12 macro composition, M13–M18 interaction craft, M19–M20 layout safety) with findings, score, and grade
 - **8 zero-dependency MCP tools** for profiles, tokens, primitives, patterns, easing rationale, retrieval, and validation
 - **24 verbatim catalog primitives** shared by cinematic and non-cinematic profiles
 - **A generated corpus index** for retrieval by archetype, technique, stack, font, category, and palette signals
@@ -26,11 +26,16 @@ It converts a brief into a profile-aware **Plan → Build → Validate** workflo
 SKILL.md                         workflow, matrices, forbidden list
 README.md                        install, customize, extend
 references/
-  design-profiles.md             five languages and selection rules
+  design-profiles.md             five languages, motion voices, selection rules
+  profile-schema.md              profile JSON schema + deriving custom profiles
   motion-design-dna.md           cinematic macro composition
-  interaction-standards.md       universal micro-motion values
+  interaction-standards.md       universal micro-motion values, springs, overshoot
+  choreography.md                multi-element composition and context adaptation
   animation-vocabulary.md        precise effect terminology
   component-catalog.md           24 verbatim primitives
+  modern-css-motion.md           scroll-driven CSS, view transitions, linear() springs
+  gsap-interop.md                contract + idioms for GSAP-using host projects
+  troubleshooting.md             symptom → cause → fix for motion feel
   prompt-writing-guide.md        portable-prompt formula
 config/
   motion-tokens.json             cinematic defaults
@@ -38,6 +43,7 @@ config/
 data/prompt-index.json           generated 54-prompt index
 scripts/
   lint_motion.py                 CLI/library rule engine
+  audit_consistency.py           cross-file duration/easing drift inventory
   build_index.py                 prompt scanner → index
   server.py                      minimal MCP stdio server
 ```
@@ -54,7 +60,13 @@ Code mode defaults to React 18 + Vite + TypeScript + Tailwind + lucide-react. Pr
 
 ## Install
 
-From the repository root, install only the builder in Claude Code:
+With the [skills CLI](https://github.com/vercel-labs/skills) (Claude Code, Cursor, Codex, …):
+
+```bash
+npx skills add olbboy/motion-site-builder --skill motion-site-builder
+```
+
+Or, from a repository clone, install only the builder in Claude Code:
 
 ```bash
 ln -s "$(pwd)/skills/motion-site-builder" ~/.claude/skills/motion-site-builder

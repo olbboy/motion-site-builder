@@ -63,4 +63,4 @@ RESPONSIVE
 KEY DEPENDENCIES
 `react@^18` `react-dom@^18` `typescript@^5` `vite@^5` `tailwindcss@^3` `@tailwindcss/typography@^0.5` `lucide-react@latest`
 
-CONSTRAINTS: editorial restraint, one soil accent, paper/ink palette, no video, glassmorphism, decorative gradients, carousel, or fabricated documentary attribution. Only transform/opacity animate. Semantic `<article>`, `<figure>`, `<figcaption>`, `<nav aria-label>`, one H1; preserve Pexels source credit; respect reduced motion.
+CONSTRAINTS: editorial restraint, one soil accent, paper/ink palette, no video, glassmorphism, decorative gradients, carousel, or fabricated documentary attribution. Only transform/opacity animate. Semantic `<article>`, `<figure>`, `<figcaption>`, `<nav aria-label>`, one H1; preserve Pexels source credit; respect reduced motion. Never apply `overflow-x: hidden` to `html`/`body` or a root wrapper — it creates a scroll container and silently breaks `position: sticky`; contain any horizontal bleed with `overflow-x: clip` on the overflowing section instead.

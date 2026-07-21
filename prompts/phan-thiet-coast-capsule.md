@@ -63,4 +63,4 @@ RESPONSIVE
 KEY DEPENDENCIES
 `react@^18` `react-dom@^18` `typescript@^5` `vite@^5` `tailwindcss@^3` `lucide-react@latest` `embla-carousel-react@^8`
 
-CONSTRAINTS: fictional capsule, sample prices, and placeholder specs; exactly two accents. Landscape photo is context only. No video, decorative gradients, blobs, autoplay, fake product imagery, or unverified environmental claim. Only transform/opacity animate; product fallbacks required; accessible tabs/drawers/tables, reduced motion, Pexels credit.
+CONSTRAINTS: fictional capsule, sample prices, and placeholder specs; exactly two accents. Landscape photo is context only. No video, decorative gradients, blobs, autoplay, fake product imagery, or unverified environmental claim. Only transform/opacity animate; product fallbacks required; accessible tabs/drawers/tables, reduced motion, Pexels credit. Never apply `overflow-x: hidden` to `html`/`body` or a root wrapper — it creates a scroll container and silently breaks `position: sticky`; contain any horizontal bleed with `overflow-x: clip` on the overflowing section instead.

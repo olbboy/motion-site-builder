@@ -3,7 +3,7 @@ name: review-motion
 description: >
   Review motion & animation code against a high craft bar — the cinematic macro
   DNA (video/glass/entrance/reduced-motion) plus interaction-craft micro rules
-  (easing, press feedback, popover origin, interruptibility). Runs the 17-rule
+  (easing, press feedback, popover origin, interruptibility). Runs the 20-rule
   linter for the mechanical layer, then applies senior design-engineer judgment,
   and outputs a Before/After table + an explicit Block/Approve verdict.
   Use to review a DIFF or a component's motion — not to build it (that's
@@ -19,7 +19,7 @@ disable-model-invocation: true
 
 A specialized review skill. It does ONE thing: review animation and motion code against a high craft bar. It does not write features, fix unrelated bugs, or review non-motion code. If asked to review general code, decline and point to a general review skill (`/code-review`). It reviews a diff or a component — for a whole-codebase audit that produces plans, use `improve-motion`.
 
-Part of the **motion-site suite**. It reuses the shared engine: the 17-rule linter via `motion_validate` / `motion_validate_file`, and the value catalogs `motion-site-builder/references/interaction-standards.md` (micro) and `motion-design-dna.md` (macro). Pull exact curves/durations from those — never approximate.
+Part of the **motion-site suite**. It reuses the shared engine: the 20-rule linter via `motion_validate` / `motion_validate_file`, and the value catalogs `../motion-site-builder/references/interaction-standards.md` (micro) and `../motion-site-builder/references/motion-design-dna.md` (macro). Pull exact curves/durations from those — never approximate. For multi-element cohesion judgment use `../motion-site-builder/references/choreography.md` (attention budget, staging, paired exits, direction semantics); name feel-level findings with the vocabulary in `../motion-site-builder/references/troubleshooting.md` ("looks robotic", "feels cheap", "too distracting"); when the diff contains GSAP code, judge it by the idioms in `../motion-site-builder/references/gsap-interop.md` rather than flagging the library itself.
 
 ## Set the design profile first
 
@@ -54,19 +54,19 @@ Every animation in the diff is measured against these. A violation is a finding.
 4. **One accent** — at most one saturated hue; hierarchy via white opacity tiers. (M05)
 5. **Entrance discipline** — fade + rise (16–32px), token easing (expo-out `cubic-bezier(0.16,1,0.3,1)`), stagger 0.08–0.2s, duration 0.5–1.2s. This is the cinematic budget — do **not** hold it to sub-300ms. (M06/M07)
 
-### Micro — the interaction feel (linter M13–M17 + judgment)
+### Micro — the interaction feel (linter M13–M18 + judgment)
 
 6. **Responsive easing** — enter/exit uses `ease-out` or a strong custom curve. `ease-in` on any interactive UI is a block — it delays the moment the user watches most. (M13)
 7. **Sub-300ms on interaction** — buttons/dropdowns/tooltips/toasts stay under 300ms (see interaction-standards §3 for per-element budgets). Entrances are exempt (§ above).
 8. **Physicality & origin** — never `scale(0)` (start `scale(0.9–0.97)` + opacity); popovers/dropdowns/tooltips scale from their trigger, not center (modals stay centered). (M14/M15)
 9. **Press feedback** — every pressable element (button, CTA link, `role="button"`) confirms the press: `active:scale-[0.97]` / `whileTap`, ~160ms ease-out. (M16)
 10. **Interruptibility** — rapidly-triggered or gesture-driven motion (toasts, toggles, drags) is interruptible — CSS transitions/`@starting-style` or springs that retarget from current state, not keyframes that restart from zero.
-11. **Accessibility** — raw-CSS `:hover` motion gated behind `@media (hover: hover) and (pointer: fine)`. (M17)
+11. **Accessibility** — raw-CSS `:hover` motion gated behind `@media (hover: hover) and (pointer: fine)` (M17); the `:focus-visible` ring appears instantly — never animate its appearance (M18). Layout safety: no `overflow-x: hidden` on html/body (M19 — breaks `position: sticky`; use `clip`), no z-index escape hatches off the layering scale (M20).
 12. **Asymmetric timing & cohesion** — deliberate phases (press, hold, destructive confirm) animate slower; system responses snap. Motion matches the component's personality. When unsure whether motion feels right, the strongest move is often to delete it.
 
 ## How to run a review
 
-**Phase 1 — Mechanical (deterministic).** Call `motion_validate_file` on each changed file (or `motion_validate` on the code string). This surfaces M01–M17 findings with score/grade. Errors are near-automatic findings; treat warnings/infos as leads to confirm.
+**Phase 1 — Mechanical (deterministic).** Call `motion_validate_file` on each changed file (or `motion_validate` on the code string). This surfaces M01–M20 findings with score/grade. Errors are near-automatic findings; treat warnings/infos as leads to confirm. If a file opens with a `/* motion-site · … */` stamp, verify the stamp against the code — a stamp claiming a profile, archetype, or patterns the code doesn't exhibit is itself a finding ("stamp lies").
 
 **Phase 2 — Judgment (what the linter can't see).** Re-read each animation and apply the standards above — frequency appropriateness, interruptibility nuance, asymmetric timing, cohesion, and missed opportunities. Vet every mechanical finding at its `file:line`; reject by-design or exempt cases (a modal keeping `transform-origin: center` is correct; a 0.9s hero entrance is correct).
 
@@ -81,6 +81,7 @@ Every animation in the diff is measured against these. A violation is a finding.
 - Animation on a keyboard shortcut / command-palette toggle / 100+/day action
 - Interaction duration > 300ms with no reason (entrances exempt)
 - Ungated raw-CSS `:hover` motion; movement with no `prefers-reduced-motion` handling
+- Animated focus-ring appearance; `overflow-x: hidden` on html/body; `z-index: 9999`-style escape hatches
 - Decorative blob/radial-gradient over a video; missing z-layering; > 1 saturated accent
 
 ## Remedial preference hierarchy
@@ -135,4 +136,4 @@ Be specific and cite `file:line`.
 
 - Prefer CSS transitions / `@starting-style` / WAAPI for predetermined motion; JS/springs for dynamic, interruptible, gesture-driven motion.
 - When feel can't be judged from code alone (a crossfade, a spring's bounce), say so and recommend reviewing it in slow motion / frame-by-frame and with fresh eyes the next day, rather than guessing.
-- If the MCP server isn't connected, run `skills/motion-site-builder/scripts/lint_motion.py <file>` directly and read the reference `.md` files by path.
+- If the MCP server isn't connected, run `python3 skills/motion-site-builder/scripts/lint_motion.py <file>` from this repository, or resolve `scripts/lint_motion.py` from the sibling installed builder skill root; read the reference `.md` files by path.

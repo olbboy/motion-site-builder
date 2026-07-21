@@ -1,6 +1,6 @@
 # Getting Started
 
-Use Motion Site Builder to create new UI, review a motion change, improve an existing codebase, or validate/tune motion directly. The repository currently ships **54 prompts**, **5 design profiles**, **3 agent skills**, **17 lint rules**, **24 reusable primitives**, and **8 MCP tools**.
+Use Motion Site Builder to create new UI, review a motion change, improve an existing codebase, or validate/tune motion directly. The repository currently ships **54 prompts**, **5 design profiles**, **3 agent skills**, **20 lint rules**, **24 reusable primitives**, and **8 MCP tools**.
 
 ## Choose the job first
 
@@ -27,7 +27,19 @@ Most prompts use `{YOUR_VIDEO_URL}`, `{YOUR_POSTER_URL}`, or `{YOUR_IMAGE_URL_*}
 
 ## Path 2 — Install the Agent Suite
 
-The three skills share one profile system, linter, token set, and motion standard. From the repository root, this is the Claude Code symlink setup:
+The three skills share one profile system, linter, token set, and motion standard.
+
+**Option A — the [skills CLI](https://github.com/vercel-labs/skills) (recommended):**
+
+```bash
+npx skills add olbboy/motion-site-builder            # pick from the three skills
+npx skills add olbboy/motion-site-builder --all      # install all three
+npx skills add olbboy/motion-site-builder --skill motion-site-builder review-motion
+```
+
+The CLI discovers the skills from the repo's `skills/<name>/SKILL.md` layout and installs them into whichever agents you have configured (Claude Code, Cursor, Codex, …). `review-motion` and `improve-motion` share the builder's linter/config/references, so install `motion-site-builder` alongside either method skill (or use `--all`). Re-run to update.
+
+**Option B — manual symlink (Claude Code), useful when hacking on the skill itself:**
 
 ```bash
 git clone <this-repo>
@@ -53,7 +65,7 @@ Build a product-ui subscription dashboard. Return working React code.
 Use review-motion to review the animation changes in this diff.
 ```
 
-`review-motion` runs the mechanical M01–M17 checks, then applies judgment the linter cannot provide: frequency, interruptibility, timing asymmetry, origin, physicality, cohesion, and whether motion should be deleted. Output is an exact Before/After table followed by a **Block** or **Approve** verdict. It reviews motion only; it does not implement unrelated features.
+`review-motion` runs the mechanical M01–M20 checks, then applies judgment the linter cannot provide: frequency, interruptibility, timing asymmetry, origin, physicality, cohesion, and whether motion should be deleted. Output is an exact Before/After table followed by a **Block** or **Approve** verdict. It reviews motion only; it does not implement unrelated features.
 
 ### Improve an existing codebase
 

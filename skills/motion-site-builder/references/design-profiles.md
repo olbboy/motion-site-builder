@@ -27,10 +27,23 @@ Bold, colorful, maximalist. Vibrant **multi-accent** (up to 4), **springs with b
 ### ecommerce
 Product-grid commerce — imagery-first, conversion-focused. **Entrances 0.25–0.5s** (snappy browsing), brand + neutral (2 accents), quick-view/add-to-cart with crisp press feedback, card hover-lift gated for touch, embla carousels, tabular-number prices. Use for: storefronts, product pages, catalogs, checkout.
 
+## Motion voice — the three archetypes behind the profiles
+
+Each profile's motion tokens encode a recognizable *voice* (three archetypes widely practiced by contemporary design engineers — the interaction layer of this project is distilled from Emil Kowalski's published philosophy; see interaction-standards.md):
+
+| Voice | Character | Signature |
+|:---|:---|:---|
+| **Invisible** | motion you feel but never notice | opacity + tiny translate (2–6px), 100–200ms, stiff springs, no blur/rotation |
+| **Storytelling** | motion as cinematography | fade + rise + blur-to-sharp, 0.5–1.2s, layered timing, clip-path reveals, parallax depth |
+| **Joyful** | motion as personality | scale + rotation pops, springs with visible bounce, decorative flourishes |
+
+Profile → voice weighting: **cinematic** = storytelling-primary (macro) over an invisible interaction layer · **product-ui** = invisible-primary · **editorial** = invisible with storytelling accents at section boundaries · **playful** = joyful-primary · **ecommerce** = invisible with storytelling product moments. Two rules: never mix voices *within one animation*, and the more frequently an element is used, the more invisible its motion must be (frequency filter). Every profile's interaction layer stays invisible-voice — bounce never lands on a dropdown.
+
 ## Selecting & customizing
 
 - **Switch**: `motion_get_tokens(profile="editorial")`, `motion_validate(code, profile="product-ui")`, or `MOTION_PROFILE=playful python3 scripts/lint_motion.py <file>`.
-- **New profile**: drop `config/profiles/<name>.json` (same schema — copy the closest existing one, edit values). `motion_list_profiles` and `--self-test` pick it up automatically; the required keys are validated.
+- **New profile**: drop `config/profiles/<name>.json` (same schema — copy the closest existing one, edit values). `motion_list_profiles` and `--self-test` pick it up automatically; the required keys are validated. The full schema — including the qualitative `aesthetic` / `imagery` / `elevation` / `voice` blocks every shipped profile now carries — is documented in `profile-schema.md`.
+- **Derive from references**: when the user brings reference screenshots/URLs instead of picking a shipped profile, follow the extraction workflow in `profile-schema.md` (Step 0a) to generate a custom profile JSON that plugs into the same engine.
 - **Re-skin a profile**: edit its JSON — easings, durations, palette, `max_accent_hues`, `typography.display.tracking` (drives M12), `lint.disabled_rules`. No engine code changes.
 
 ## Profile-aware build resources

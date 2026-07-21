@@ -4,8 +4,14 @@
     {
       "name": "landing",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["--prefix", "site", "run", "dev"],
-      "port": 5173
+      "runtimeArgs": ["--prefix", "site", "run", "dev", "--", "--port", "5183"],
+      "port": 5183
+    },
+    {
+      "name": "aurelia-example",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "examples/aurelia-landing", "run", "dev"],
+      "port": 5199
     }
   ]
 }

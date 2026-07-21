@@ -57,6 +57,34 @@
     "note": "panels/drawers/toasts layer over content; there is no video canvas"
   },
   "radius": { "interactive": "rounded-md", "panel": "rounded-lg", "card": "rounded-xl" },
+  "aesthetic": {
+    "mood": ["crisp", "functional", "trustworthy"],
+    "genre": "corporate SaaS",
+    "personality": ["efficient", "precise", "calm"],
+    "density": "comfortable",
+    "ornamentation": "none"
+  },
+  "imagery": {
+    "photo_treatment": "minimal — screenshots and data visuals over photography",
+    "illustration_style": "geometric spot illustrations for empty states only",
+    "image_shape": "rounded-card",
+    "pattern_usage": "none"
+  },
+  "elevation": {
+    "shadow_style": "soft-diffused",
+    "levels": {
+      "low": "0 1px 2px rgb(0 0 0 / 0.05)",
+      "medium": "0 4px 12px rgb(0 0 0 / 0.08)",
+      "high": "0 12px 32px rgb(0 0 0 / 0.12)"
+    },
+    "note": "cards/menus/modals rise on a 3-step shadow scale (dark mode: raise surface color instead)"
+  },
+  "voice": {
+    "tone": "plain, instructive",
+    "formality": "professional",
+    "cta_style": "direct imperative",
+    "error_tone": "specific and actionable, never blaming"
+  },
   "dependencies": {
     "allowed": [
       "react", "react-dom", "typescript", "vite", "@vitejs/plugin-react",
@@ -84,6 +112,7 @@
   },
   "lint": {
     "weights": { "error": 15, "warning": 5, "info": 1 },
+    "z_index_escape_threshold": 999,
     "disabled_rules": [],
     "severity_overrides": {},
     "note": "single-accent relaxed via max_accent_hues=4; negative-tracking rule (M12) off via tracking=neutral"

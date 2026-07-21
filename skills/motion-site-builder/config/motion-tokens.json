@@ -68,6 +68,31 @@
     "panel": "rounded-t-[40px] .. rounded-t-[60px]",
     "card": "rounded-2xl"
   },
+  "aesthetic": {
+    "mood": ["cinematic", "premium", "quiet"],
+    "genre": "launch-cinematic marketing",
+    "personality": ["confident", "restrained", "editorial"],
+    "density": "spacious",
+    "ornamentation": "none",
+    "note": "the perceptual layer — see references/profile-schema.md for enums"
+  },
+  "imagery": {
+    "photo_treatment": "fullscreen video/photo canvas; darkening overlay only when text contrast requires it",
+    "illustration_style": "none",
+    "image_shape": "full-bleed",
+    "pattern_usage": "none"
+  },
+  "elevation": {
+    "shadow_style": "none",
+    "levels": {},
+    "note": "depth via z-layering and glass, never shadows — a deliberate philosophy, not an omission"
+  },
+  "voice": {
+    "tone": "declarative, sensory",
+    "formality": "confident-casual",
+    "cta_style": "direct imperative",
+    "error_tone": "calm, plain"
+  },
   "dependencies": {
     "allowed": [
       "react", "react-dom", "typescript", "vite", "@vitejs/plugin-react",
@@ -92,10 +117,11 @@
     "ban_ease_in": true,
     "popover_origin_aware": true,
     "gate_hover_pointer_fine": true,
-    "note": "Micro-interaction craft (buttons, popovers, hover) distilled from Emil Kowalski's design-engineering philosophy. Rules M13-M17 read these flags and scope to INTERACTIVE elements only — never hero entrances / scroll storytelling, which are first-time/rare and may run longer. Full value catalog: references/interaction-standards.md."
+    "note": "Micro-interaction craft (buttons, popovers, hover) distilled from Emil Kowalski's design-engineering philosophy. Rules M13-M17 read these flags and scope to INTERACTIVE elements only; M18 independently enforces instant focus-ring appearance. Hero entrances / scroll storytelling are first-time/rare and may run longer. Full value catalog: references/interaction-standards.md."
   },
   "lint": {
     "weights": { "error": 15, "warning": 5, "info": 1 },
+    "z_index_escape_threshold": 999,
     "disabled_rules": [],
     "severity_overrides": {},
     "note": "disable rules by id (e.g. \"M11\"), or override severity: {\"M09\": \"info\"}"

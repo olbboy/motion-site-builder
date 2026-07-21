@@ -20,7 +20,7 @@ const STEPS = [
   },
   {
     title: 'Validate',
-    body: 'A 17-rule motion linter scores every file — reduced-motion, GPU-only transforms, and ARIA are errors, not afterthoughts.',
+    body: 'A 20-rule motion linter scores every file — reduced-motion, GPU-only transforms, and ARIA are errors, not afterthoughts.',
   },
 ]
 

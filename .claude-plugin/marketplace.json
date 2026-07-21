@@ -1,0 +1,19 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "motion-site-builder",
+  "description": "Motion Site Builder skills — build motion-driven sites across five design profiles, review motion diffs against a high craft bar, and audit whole codebases into executable improvement plans",
+  "owner": {
+    "name": "olbboy"
+  },
+  "plugins": [
+    {
+      "name": "motion-site-builder",
+      "description": "motion-site-builder (build) + review-motion (judge a diff) + improve-motion (audit → plans), sharing five profile configs, a 20-rule motion linter, and an MCP toolset",
+      "author": {
+        "name": "olbboy"
+      },
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}

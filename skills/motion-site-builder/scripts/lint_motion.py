@@ -337,10 +337,13 @@ def rule_decorative_noise(src: Source, cfg: dict):
 
 @rule("M09", WARNING)
 def rule_layering(src: Source, cfg: dict):
-    """Video background requires explicit z-index layering."""
+    """Video background requires explicit z-index layering. An escape-hatch
+    value at/above the profile threshold does not count as layering."""
     if not src.has_video:
         return []
-    if re.search(r"z-\d|z-\[|z-index", src.lower):
+    threshold = cfg.get("lint", {}).get("z_index_escape_threshold")
+    values = [int(v) for v in re.findall(r"(?<![\w-])z-(?:index\s*:\s*|\[)?(\d+)", src.lower)]
+    if threshold is not None and any(v < threshold for v in values):
         return []
     return [dict(
         message="Video background present but no explicit z-index layering.",
@@ -492,6 +495,136 @@ def rule_hover_gate(src: Source, cfg: dict):
     )]
 
 
+# ─── Rules M18–M20 · focus, scroll containment, layering ─────────────
+
+def _transition_animates_ring(body: str) -> bool:
+    """Whether declarations in one CSS rule transition outline/box-shadow.
+
+    Covers explicit properties and the implicit `all` in `transition: 200ms`.
+    Unknown custom-property shorthands are left to human review.
+    """
+    for m in re.finditer(r"(?:^|;)\s*(transition(?:-property)?)\s*:\s*([^;]+)", body):
+        prop, value = m.group(1), m.group(2)
+        items, start, depth = [], 0, 0
+        for i, char in enumerate(value):
+            if char == "(":
+                depth += 1
+            elif char == ")":
+                depth = max(0, depth - 1)
+            elif char == "," and depth == 0:
+                items.append(value[start:i])
+                start = i + 1
+        items.append(value[start:])
+        for item in items:
+            if re.search(r"(?:^|\s)(all|outline(?:-\w+)?|box-shadow)(?:\s|$)", item.strip()):
+                return True
+            if prop == "transition" and re.fullmatch(
+                    r"\s*(?:[\d.]+m?s|var\([^)]*\))"
+                    r"(?:\s+(?:ease(?:-in|-out|-in-out)?|linear|cubic-bezier\([^)]*\)|[\d.]+m?s))*\s*",
+                    item):
+                return True
+    return False
+
+
+def _selector_key(selector: str) -> str:
+    """Normalize one selector enough to pair `.x` with `.x:focus-visible`."""
+    selector = re.sub(r":focus(?:-visible|-within)?(?:\([^)]*\))?", "", selector)
+    return re.sub(r"\s+", " ", selector).strip()
+
+
+@rule("M18", WARNING)
+def rule_focus_ring_animation(src: Source, cfg: dict):
+    """The focus ring is the keyboard user's only location cue — it must appear
+    instantly. Detect ring transitions declared in the focus rule, on its base
+    selector, or through common Tailwind transition utilities."""
+    findings = []
+    seen_lines = set()
+    css_rules = []
+    for m in re.finditer(r"([^{}]+)\{([^{}]*)\}", src.lower):
+        selectors = [_selector_key(s) for s in m.group(1).split(",")]
+        css_rules.append((m, selectors, m.group(2)))
+
+    for m, selectors, body in css_rules:
+        raw_selector = m.group(1)
+        if not re.search(r":focus(?:-visible|-within)?", raw_selector):
+            continue
+        if not re.search(r"(?:^|;)\s*(?:outline(?:-\w+)?|box-shadow)\s*:", body):
+            continue
+        focus_keys = {s for s in selectors if s}
+        animated = _transition_animates_ring(body)
+        if not animated:
+            for _base_match, base_selectors, base_body in css_rules:
+                if focus_keys.intersection(base_selectors) and _transition_animates_ring(base_body):
+                    animated = True
+                    break
+        line = src.line_of(m.start())
+        if animated and line not in seen_lines:
+            seen_lines.add(line)
+            findings.append(dict(
+                message="Focus ring appearance is animated — the ring must show instantly on focus.",
+                suggestion="Remove outline/box-shadow from the base/focus transition (transition transform/color only).",
+                line=line,
+            ))
+
+    class_attr = re.compile(
+        r"\bclass(?:name)?\s*=\s*(?:\{\s*)?(?P<quote>[\"'`])(?P<classes>.*?)(?P=quote)\s*\}?",
+        re.S,
+    )
+    for attr in class_attr.finditer(src.lower):
+        classes = attr.group("classes")
+        tailwind = re.search(
+            r"(?:^|\s)(?:focus|focus-visible|focus-within):(?:ring|outline|shadow)[^\s]*", classes)
+        tailwind_transition = re.search(
+            r"(?:^|\s)(?:transition|transition-all|transition-shadow)(?=\s|$)", classes)
+        if tailwind and tailwind_transition:
+            line = src.line_of(attr.start("classes") + tailwind.start())
+            if line not in seen_lines:
+                findings.append(dict(
+                    message="Tailwind focus ring is covered by transition/transition-shadow — it must show instantly.",
+                    suggestion="Use transition-transform/transition-colors instead of transition/transition-all/transition-shadow on this control.",
+                    line=line,
+                ))
+    return findings
+
+
+@rule("M19", WARNING)
+def rule_overflow_hidden_root(src: Source, cfg: dict):
+    """`overflow-x: hidden` on html/body creates a scroll container that breaks
+    position:sticky and clips focus rings. `clip` contains the bleed without one."""
+    findings = []
+    for m in re.finditer(
+            r"(?<![\w.#-])(?:html|body)\b[^{};]*\{[^}]*overflow(?:-x)?\s*:\s*hidden", src.lower):
+        findings.append(dict(
+            message="`overflow-x: hidden` on html/body — breaks position:sticky and masks the real overflow bug.",
+            suggestion="Use `overflow-x: clip` on both html and body, then fix the element that actually overflows.",
+            line=src.line_of(m.start()),
+        ))
+    return findings
+
+
+@rule("M20", INFO)
+def rule_zindex_escape(src: Source, cfg: dict):
+    """Very large z-index values abandon the active profile's layering scale."""
+    findings = []
+    threshold = cfg.get("lint", {}).get("z_index_escape_threshold")
+    if threshold is None:
+        return findings
+    layers = [(name, value) for name, value in cfg.get("layering", {}).items()
+              if isinstance(value, (int, float)) and not isinstance(value, bool)]
+    scale = ", ".join(f"{name} {value:g}" for name, value in layers)
+    for m in re.finditer(
+            r"z-index\s*:\s*(\d+)|(?<![\w-])z-(?:\[(\d+)\]|(\d+))(?![\w-])",
+            src.lower):
+        value = int(m.group(1) or m.group(2) or m.group(3))
+        if value >= threshold:
+            findings.append(dict(
+                message=f"z-index: {value} — an escape hatch outside the explicit layering scale.",
+                suggestion=f"Stack with the active profile layers ({scale}); add a named tier to the profile if needed.",
+                line=src.line_of(m.start()),
+            ))
+    return findings
+
+
 # ─── Engine ──────────────────────────────────────────────────────────
 
 def lint_source(src: Source, cfg: dict) -> list:
@@ -540,7 +673,11 @@ BAD_FIXTURE = """
 <style>@keyframes grow { from { width: 0; } to { width: 100px; } }
 .x { animation: grow 2s; }
 .pop { transition: transform 0.3s cubic-bezier(0.5, 0.2, 0.1, 1); }
-.card:hover { transform: scale(1.2); }</style>
+.card:hover { transform: scale(1.2); }
+body { overflow-x: hidden; }
+.btn { transition: box-shadow 200ms; }
+.btn:focus-visible { outline: 2px solid #fff; box-shadow: 0 0 0 2px blue; }
+.modal { z-index: 9999; }</style>
 """
 
 GOOD_FIXTURE = """
@@ -555,13 +692,15 @@ GOOD_FIXTURE = """
 .animate-fade-up { animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) backwards; }
 .animate-marquee { animation: marquee 40s linear infinite; }
 button:active { transform: scale(0.97); transition: transform 160ms ease-out; }
+button { transition: transform 160ms ease-out; }
+button:focus-visible { outline: 2px solid currentColor; }
 @media (prefers-reduced-motion: reduce) { * { animation-duration: 0.01ms !important; } }
 </style>
 """
 
 
 REQUIRED_CONFIG_KEYS = ("easings", "durations", "stagger", "typography", "palette",
-                        "dependencies", "interaction", "lint")
+                        "layering", "dependencies", "interaction", "lint")
 
 
 def _check_profiles() -> dict:
@@ -573,6 +712,8 @@ def _check_profiles() -> dict:
         try:
             cfg = load_config(profile=name)
             missing_keys = [k for k in REQUIRED_CONFIG_KEYS if k not in cfg]
+            if "z_index_escape_threshold" not in cfg.get("lint", {}):
+                missing_keys.append("lint.z_index_escape_threshold")
             # exercise the engine under this profile (must not raise)
             lint_code(GOOD_FIXTURE, "g.html", cfg)
             lint_code(BAD_FIXTURE, "b.html", cfg)
@@ -590,14 +731,42 @@ def self_test() -> int:
     good = lint_code(GOOD_FIXTURE, "good.html", cfg)
     bad_rules = {f["rule_id"] for f in bad["findings"]}
     expected = {"M01", "M02", "M03", "M05", "M06", "M07", "M08", "M09", "M10", "M11", "M12",
-                "M13", "M14", "M15", "M16", "M17"}
+                "M13", "M14", "M15", "M16", "M17", "M18", "M19", "M20"}
     missing = expected - bad_rules
     profiles = _check_profiles()
-    ok = not missing and good["score"] >= 90 and profiles["ok"]
+    regression_sources = {
+        "focus-base-transition": ".btn { transition: box-shadow 200ms; } .btn:focus-visible { box-shadow: 0 0 0 2px blue; }",
+        "focus-implicit-all-list": ".btn { transition: transform 200ms, 150ms ease-out; } .btn:focus-visible { outline: 2px solid blue; }",
+        "focus-tailwind-transition": '<button class="transition-shadow focus-visible:ring-2">Go</button>',
+        "focus-tailwind-separate-elements": '<button class="transition-shadow">A</button><button class="focus:ring-2">B</button>',
+        "focus-transform-only": ".btn { transition: transform 200ms; } .btn:focus-visible { outline: 2px solid blue; }",
+        "translate-z-is-not-layering": '<video autoplay muted loop playsinline poster="p.jpg" class="translate-z-12"></video>',
+        "tailwind-z-escape": '<div class="z-9999"></div>',
+        "translate-z-is-not-z-index": '<div class="translate-z-[9999px]"></div>',
+    }
+    regression_reports = {name: lint_code(code, name, cfg) for name, code in regression_sources.items()}
+    regressions = {
+        "focus-base-transition": any(f["rule_id"] == "M18" for f in regression_reports["focus-base-transition"]["findings"]),
+        "focus-implicit-all-list": any(f["rule_id"] == "M18" for f in regression_reports["focus-implicit-all-list"]["findings"]),
+        "focus-tailwind-transition": any(f["rule_id"] == "M18" for f in regression_reports["focus-tailwind-transition"]["findings"]),
+        "focus-tailwind-separate-elements-safe": not any(f["rule_id"] == "M18" for f in regression_reports["focus-tailwind-separate-elements"]["findings"]),
+        "focus-transform-only-safe": not any(f["rule_id"] == "M18" for f in regression_reports["focus-transform-only"]["findings"]),
+        "translate-z-does-not-satisfy-M09": any(f["rule_id"] == "M09" for f in regression_reports["translate-z-is-not-layering"]["findings"]),
+        "tailwind-z-escape-triggers-M20": any(f["rule_id"] == "M20" for f in regression_reports["tailwind-z-escape"]["findings"]),
+        "translate-z-does-not-trigger-M20": not any(f["rule_id"] == "M20" for f in regression_reports["translate-z-is-not-z-index"]["findings"]),
+    }
+    product_cfg = load_config(profile="product-ui")
+    product_z = lint_code(".modal { z-index: 9999; }", "product-z.css", product_cfg)
+    regressions["M20-uses-active-profile-scale"] = any(
+        f["rule_id"] == "M20" and "nav 30" in f["suggestion"]
+        for f in product_z["findings"]
+    )
+    ok = not missing and good["score"] >= 90 and profiles["ok"] and all(regressions.values())
     print(json.dumps({
         "bad_fixture": {"rules_fired": sorted(bad_rules), "missing_expected": sorted(missing), **{k: bad[k] for k in ("score", "grade")}},
         "good_fixture": {"rules_fired": sorted({f['rule_id'] for f in good['findings']}), **{k: good[k] for k in ("score", "grade")}},
         "profiles": profiles,
+        "regressions": regressions,
         "pass": ok,
     }, indent=2))
     return 0 if ok else 1

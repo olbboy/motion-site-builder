@@ -4,6 +4,53 @@ All notable changes to this project are documented here. Format follows [Keep a 
 
 ## [Unreleased]
 
+### Added — motion-craft study: choreography, custom profiles, drift audit, multi-runtime packaging
+
+Distilled from a study of five open motion/design skill repos ([lottiefiles/motion-design-skill](https://github.com/lottiefiles/motion-design-skill), [AThevon/genjutsu](https://github.com/AThevon/genjutsu), [zanwei/design-dna](https://github.com/zanwei/design-dna), [greensock/gsap-skills](https://github.com/greensock/gsap-skills), [cloudai-x/threejs-skills](https://github.com/cloudai-x/threejs-skills)) — concepts adapted to this project's profiles and values; nothing copied verbatim, and the no-WebGL / no-GSAP-by-default stance is deliberately preserved.
+
+- **4 new reference docs** in `skills/motion-site-builder/references/`:
+  - **`choreography.md`** — composing multi-element motion: attention budget (one hero motion per moment, ≤⅓ of elements active), 1/3 travel rule, staging & focus dimming, secondary action / follow-through offsets, parallax depth ratios, narrative act budgets, direction semantics (rise = arrival, sink = dismissal), context adaptation (platform tempo, vestibular safety, 100th-viewing test, pausable >5s loops), and six composed-moment recipes (page load, modal, list update, tabs, accordion, celebration).
+  - **`troubleshooting.md`** — symptom → cause → fix vocabulary for review/audit verdicts ("looks robotic", "feels cheap/flat", "too distracting", "no personality") plus per-profile failure modes and a 7-point quick diagnostic.
+  - **`modern-css-motion.md`** — zero-dependency techniques as progressive enhancement: CSS scroll-driven animations (`animation-timeline: view()/scroll()`, now the documented **third scroll school**), View Transitions API, `linear()` spring easing, `@property`, anchor positioning, container-query motion, and the rendering-cost table behind M02.
+  - **`gsap-interop.md`** — behavior contract when a host project already uses GSAP (the builder still never introduces it): `useGSAP`/`scope`/`contextSafe` lifecycle, ScrollTrigger correctness (scrub XOR toggleActions, no nested triggers, `containerAnimation` needs `ease: "none"`), `quickTo`, `gsap.matchMedia()` reduced-motion, and audit greps.
+- **Profile schema gains a perceptual layer** — every profile JSON now carries `aesthetic` (mood/genre/personality/density/ornamentation), `imagery` (photo treatment, illustration style, image shape), `elevation` (shadow style + levels; cinematic/editorial stay `"none"` by philosophy), and `voice` (tone, CTA style, error tone). Documented in the new **`references/profile-schema.md`** — which also adds **Step 0a: derive a custom profile from user references** (extraction heuristics + priority order), turning the five shipped profiles into presets of an open, reference-driven profile system. The engine needed zero changes — profiles were already name-parametric.
+- **`scripts/audit_consistency.py`** — zero-dep cross-file drift audit (the layer a per-file linter can't see): inventories literal duration/easing/spring values across a source tree (including every item in comma-separated CSS declarations), marks token vs off-token curves per active profile, flags drift (>8 distinct durations / >5 off-token easings; `-delay` values and the mandatory reduced-motion `0.01ms` resets are excluded, and `ease: CONST` array constants are resolved to their curves), and lists exit-risk files (conditional `<motion.*>` mounts with no exit mechanism — `AnimatePresence`, `@starting-style`, or a mounted flag). Wired into `improve-motion` recon and AUDIT.md §7.
+- **Interaction standards deepened** — spring preset table (snappy/gentle/bouncy/heavy stiffness-damping-mass), overshoot budget by context (errors 0%, feedback 2–5%, success 5–10%, celebration 15–25%), and the paired-exit rule (every entrance needs an exit; exits 30–50% shorter).
+- **`design-profiles.md`** — the three motion-voice archetypes (invisible / storytelling / joyful) with per-profile weighting, plus the never-mix-within-one-animation rule.
+- **Audit coverage for foreign stacks** — AUDIT.md now includes a WebGL checklist (`dispose()`, pixel-ratio cap ≤2, pause on hidden tab / reduced-motion, context-loss fallback) and the GSAP checklist, so `improve-motion` judges those surfaces by their own idioms instead of flagging them wholesale.
+- **Multi-runtime packaging** — `.claude-plugin/` (plugin + marketplace manifests for `/plugin marketplace add olbboy/motion-site-builder`), `skills/llms.txt` (skill index with triggers for fast agent discovery), `.github/copilot-instructions.md` (condensed motion DNA for Copilot users), and root `AGENTS.md` (conventions for agents editing this repo).
+- **SKILL/checklist updates** — builder Step 0a (derive profile), third scroll school in Step 12 and motion-design-dna §6, vestibular-safety + paired-exit items in the Polish Checklist; `review-motion` cites choreography/troubleshooting/gsap-interop.
+
+### Fixed
+
+- **M09** — the z-index detection regex is now word-bounded (`(?<![\w-])z-`), so unrelated utilities like `translate-z-12` no longer count as "explicit layering" on a video stack.
+- **`--self-test` schema check** — `layering` added to the required profile keys, so a derived profile missing its z-scale fails validation up front instead of only surfacing later through M09/M20.
+- `.claude/launch.json` — the aurelia dev-server entry now points at `examples/aurelia-landing` instead of a machine-local scratch path.
+- **Dev toolchain: Vite 5 → 8** (+ `@vitejs/plugin-react` 4 → 6) in `site/` and `examples/aurelia-landing` — clears the remaining `npm audit` high/moderate advisories in the dev-server toolchain (full audit now 0 vulnerabilities in both projects). No config or runtime changes were needed; production builds, dev-server smoke, and the 100/A+ lint matrix all verified unchanged.
+
+### Added — build accountability layer + 3 lint rules
+
+Workflow disciplines adapted from studying [nutlope/hallmark](https://github.com/nutlope/hallmark)'s anti-slop methodology, translated to motion-site's motion-first scope:
+
+- **3 new lint rules — total 20** (M01–M12 macro, M13–M18 interaction craft, M19–M20 layout safety):
+  - **M18** — animated focus ring: a transition on `outline`/`box-shadow` in a `:focus`/`:focus-visible` block or its base selector delays the keyboard user's only location cue; Tailwind `transition[-shadow]` + `focus-visible:ring-*` is covered too.
+  - **M19** — `overflow-x: hidden` on `html`/`body`: creates a scroll container that breaks `position: sticky` and masks the real overflow bug; use `overflow-x: clip` and fix the overflowing element.
+  - **M20** — z-index escape hatches (`z-index: 9999`-style values ≥ 999) abandon the explicit layering scale. M09 (layering) no longer accepts an escape-hatch value as "explicit layering".
+  - Self-test fixtures updated (bad fixture fires 19 rules; site + examples re-linted, all still 100/A+).
+- **Builder accountability workflow** (`motion-site-builder/SKILL.md`):
+  - **Step 0.5 pre-flight scan** — on existing projects, read fonts/tokens/motion stance/framework first and emit a cited "Preserving / Introducing" block; extend the project's tokens, never invent a parallel set.
+  - **Context gate** — ask Audience · Job · Tone once (opt-out with `"go ahead"`); inferred picks must be disclosed in one line, never silent.
+  - **Phase A preview gate** — a five-line Profile/Archetype/Palette/Patterns/Mode preview the user can redirect before any code is written.
+  - **Pre-emit self-critique** — six axes (Purpose, Tempo, Cohesion, Restraint, Accessibility, Variety) scored 1–5; any axis < 3 forces a revision pass.
+  - **Stamp + project memory + diversification** — every build stamps its entry file (`/* motion-site · profile · archetype · patterns · critique */`) and appends `.motion-site/log.json`; the next build's archetype and pattern set must differ from the last, with the rotation stated in plain text.
+  - **Honest copy** — invented metrics/testimonials/logo walls added to the universal FORBIDDEN list.
+- **`review-motion`**: verifies stamps against code ("stamp lies" are findings); escalation triggers for animated focus rings, root `overflow-x: hidden`, and z-index escape hatches.
+- **`improve-motion`**: recon reads `.motion-site/log.json` + stamps as declared intent and audits stamp-vs-code drift.
+- **`docs/project-roadmap.md`** — hallmark-inspired backlog (variant mode, briefs-as-fixtures eval suite, motion-DNA study verb, per-component duration multipliers, 8-state demo wrapper).
+- **`examples/aurelia-landing/`** — cinematic code-mode dogfood: the full React + Vite + framer-motion project built from `prompts/aurelia-landing.md` (staggered hero, `whileInView` reveals, `useScroll` sticky-stack, `useReducedMotion()` gating), 100/A+ on every source file, stamped, bring-your-own-media placeholders. Born from a 3-way rebuild experiment (local skill build vs two Lovable runs) where the local build was the only one to pass the sticky-stack check first try.
+- **Overflow guard in 25 sticky/scroll prompts + prompt-writing-guide** — appended to CONSTRAINTS: never `overflow-x: hidden` on html/body or a root wrapper (silently breaks `position: sticky`); use `overflow-x: clip`. Motivated by a live Lovable rebuild that spontaneously emitted the broken pattern (caught by the new M19 rule); index rebuilt.
+- **`npx skills add` documented as the primary install path** — the repo's `skills/<name>/SKILL.md` layout is already discovered by the [skills CLI](https://github.com/vercel-labs/skills) (verified locally: all 3 skills found); README, getting-started, and the builder README now lead with it. No manifest needed — hallmark's `package.json "skill"` field is that repo's own convention, not part of the CLI spec.
+
 ### Changed — clean-room prompt rebuild and expansion
 
 - **The prompt library is now 100% original.** Removed 82 prompts that were inherited from a third party and rebuilt from the project's own design profiles. The clean-room library first reached 14 prompts, then expanded with 20 general-purpose prompts and a 20-prompt Vietnam landscape collection. The current library contains **54 original prompts**, all MIT and linted under their intended profile.

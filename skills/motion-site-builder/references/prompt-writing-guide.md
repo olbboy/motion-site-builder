@@ -58,7 +58,8 @@ RESPONSIVE: mobile-first; nav links hidden below md; H1 scales text-5xl → md:t
 
 CONSTRAINTS: cinematic minimalism — no decorative blobs, radial gradients, or overlays
 (the video provides all depth). Only animate transform/opacity. Respect prefers-reduced-motion.
-ARIA labels on nav and icon-only buttons.
+ARIA labels on nav and icon-only buttons. Never apply `overflow-x: hidden` to html/body or a
+root wrapper — it silently breaks position: sticky; use `overflow-x: clip` instead.
 ```
 
 ## Landing-Page Extras
@@ -69,6 +70,7 @@ For the Full Landing archetype, add:
 - `REUSABLE COMPONENTS` — each with full prop/class spec.
 - `KEY DEPENDENCIES` — pinned versions (e.g. `framer-motion@^11`).
 - Per-section motion spec: which pattern (sticky-stack, marquee, char reveal), with exact numbers.
+- **Sticky/scroll prompts must carry the overflow guard** in CONSTRAINTS (the `overflow-x: clip` sentence above) — AI builders spontaneously add `overflow-x: hidden` root wrappers, which kill `position: sticky` (observed on Lovable; lint rule M19).
 
 ## Quality Gate
 

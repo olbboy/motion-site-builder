@@ -33,7 +33,7 @@ export default function FinalCta() {
           Star on GitHub
         </a>
         <p className="mt-14 text-sm text-white/50">
-          MIT licensed · Built with its own skill · 17-rule linter · cubic-bezier(0.16, 1, 0.3, 1)
+          MIT licensed · Built with its own skill · 20-rule linter · cubic-bezier(0.16, 1, 0.3, 1)
         </p>
       </Reveal>
       <footer className="mx-auto mt-24 flex max-w-6xl flex-col items-center justify-between gap-4 border-t border-white/[0.06] pb-12 pt-10 text-[13px] text-white/50 sm:flex-row">

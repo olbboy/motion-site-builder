@@ -1,6 +1,9 @@
 # internal working docs (plans, reports)
 plans/
 
+# per-project builder memory (machine-written run log; carries brief text)
+.motion-site/
+
 # python
 __pycache__/
 *.pyc

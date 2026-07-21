@@ -55,6 +55,30 @@
     "note": "flat document flow; a sticky header sits over the reading column"
   },
   "radius": { "interactive": "rounded-md", "panel": "rounded-lg", "card": "rounded-lg" },
+  "aesthetic": {
+    "mood": ["literary", "calm", "considered"],
+    "genre": "long-form publishing / documentation",
+    "personality": ["thoughtful", "quiet", "authoritative"],
+    "density": "spacious",
+    "ornamentation": "subtle-accents"
+  },
+  "imagery": {
+    "photo_treatment": "full-column editorial photography with captions",
+    "illustration_style": "line or engraving-style where used",
+    "image_shape": "full-column",
+    "pattern_usage": "thin rules and folios, no decorative patterns"
+  },
+  "elevation": {
+    "shadow_style": "none",
+    "levels": {},
+    "note": "flat document flow; hierarchy comes from typography, not depth"
+  },
+  "voice": {
+    "tone": "measured, literary",
+    "formality": "formal",
+    "cta_style": "subtle suggestion",
+    "error_tone": "polite, precise"
+  },
   "dependencies": {
     "allowed": [
       "react", "react-dom", "typescript", "vite", "@vitejs/plugin-react",
@@ -80,6 +104,7 @@
   },
   "lint": {
     "weights": { "error": 15, "warning": 5, "info": 1 },
+    "z_index_escape_threshold": 999,
     "disabled_rules": [],
     "severity_overrides": {},
     "note": "single accent kept; motion restrained by design"

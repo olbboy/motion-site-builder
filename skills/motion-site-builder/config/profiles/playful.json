@@ -57,6 +57,33 @@
     "note": "decorative shapes and gradients ARE the identity here (unlike cinematic, where they are banned)"
   },
   "radius": { "interactive": "rounded-full", "panel": "rounded-3xl", "card": "rounded-2xl" },
+  "aesthetic": {
+    "mood": ["joyful", "bold", "energetic"],
+    "genre": "consumer / creative campaign",
+    "personality": ["exuberant", "friendly", "surprising"],
+    "density": "comfortable",
+    "ornamentation": "decorative"
+  },
+  "imagery": {
+    "photo_treatment": "saturated, high-contrast photography — or none at all",
+    "illustration_style": "sticker/cartoon spot illustrations welcome",
+    "image_shape": "organic / rounded",
+    "pattern_usage": "decorative shapes and gradients ARE the identity"
+  },
+  "elevation": {
+    "shadow_style": "hard-drop",
+    "levels": {
+      "low": "2px 2px 0 currentColor",
+      "medium": "4px 4px 0 currentColor"
+    },
+    "note": "offset solid shadows suit the sticker language; soft blur shadows feel off-brand here"
+  },
+  "voice": {
+    "tone": "playful, direct",
+    "formality": "casual",
+    "cta_style": "friendly invitation",
+    "error_tone": "light but clear — never joke away a failure"
+  },
   "dependencies": {
     "allowed": [
       "react", "react-dom", "typescript", "vite", "@vitejs/plugin-react",
@@ -82,6 +109,7 @@
   },
   "lint": {
     "weights": { "error": 15, "warning": 5, "info": 1 },
+    "z_index_escape_threshold": 999,
     "disabled_rules": ["M08"],
     "severity_overrides": {},
     "note": "M08 (no gradients/blobs over video) disabled — decorative color is intentional here; multi-accent via max_accent_hues=4"

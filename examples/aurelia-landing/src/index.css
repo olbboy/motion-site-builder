@@ -1,0 +1,56 @@
+/* motion-site · profile: cinematic · archetype: full-landing · patterns: staggered-fade-rise · whileInView-reveal · sticky-stack · critique: P5 T5 C5 R5 A5 V4 */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.01);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%,
+    rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%,
+    rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* large surfaces (movement cards, spec table) get a real hairline; liquid-glass stays for small pills */
+.panel { background: rgba(247,242,231,0.03); border: 1px solid rgba(247,242,231,0.08); }
+
+.text-glow { text-shadow: 0 0 40px rgba(247,242,231,0.26), 0 0 90px rgba(201,162,39,0.24); }
+
+@keyframes unveil {
+  from { opacity: 0; transform: translateY(26px); filter: blur(6px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+}
+.animate-unveil         { animation: unveil 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-unveil-delay-1 { animation: unveil 1s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both; }
+.animate-unveil-delay-2 { animation: unveil 1s cubic-bezier(0.16, 1, 0.3, 1) 0.36s both; }
+.animate-unveil-delay-3 { animation: unveil 1s cubic-bezier(0.16, 1, 0.3, 1) 0.54s both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-unveil, .animate-unveil-delay-1, .animate-unveil-delay-2, .animate-unveil-delay-3 {
+    animation: none; opacity: 1; transform: none; filter: none;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important; scroll-behavior: auto !important;
+  }
+}

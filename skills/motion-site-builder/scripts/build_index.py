@@ -121,7 +121,9 @@ def build(prompts_dir: str, output: str) -> dict:
 
     index = {
         "meta": {
-            "source_dir": os.path.abspath(prompts_dir),
+            # Keep generated output stable across local machines and CI. The
+            # index only needs to identify the corpus, not record who built it.
+            "source_dir": os.path.basename(os.path.abspath(prompts_dir)),
             "count": len(entries),
             "generator": "build_index.py",
             "note": "regex-derived tags are lower bounds; re-run after adding prompts",

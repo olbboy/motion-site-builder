@@ -57,4 +57,4 @@ RESPONSIVE
 KEY DEPENDENCIES
 `react@^18` `react-dom@^18` `typescript@^5` `vite@^5` `tailwindcss@^3` `@tailwindcss/typography@^0.5` `lucide-react@latest`
 
-CONSTRAINTS: one copper accent and neutral derivatives; no video, glass, gradients, blobs, carousel, autoplay sound, or faux quotations. Semantic article and figure markup; links have visible focus; only transform/opacity animate; preserve Pexels credit and reduced-motion handling.
+CONSTRAINTS: one copper accent and neutral derivatives; no video, glass, gradients, blobs, carousel, autoplay sound, or faux quotations. Semantic article and figure markup; links have visible focus; only transform/opacity animate; preserve Pexels credit and reduced-motion handling. Never apply `overflow-x: hidden` to `html`/`body` or a root wrapper — it creates a scroll container and silently breaks `position: sticky`; contain any horizontal bleed with `overflow-x: clip` on the overflowing section instead.

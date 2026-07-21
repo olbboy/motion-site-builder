@@ -63,4 +63,4 @@ RESPONSIVE
 KEY DEPENDENCIES
 `react@^18` `react-dom@^18` `typescript@^5` `vite@^5` `tailwindcss@^3` `framer-motion@^11` `lucide-react@latest`
 
-CONSTRAINTS: one saturated accent only; photograph supplies all depth—no decorative blobs or radial gradients. Explicit media z-0 → scrim z-[1] → content z-10 → nav z-20. Preserve the source credit in the footer. Respect `prefers-reduced-motion`; ARIA label on nav and icon-only buttons; only transform/opacity/filter animate.
+CONSTRAINTS: one saturated accent only; photograph supplies all depth—no decorative blobs or radial gradients. Explicit media z-0 → scrim z-[1] → content z-10 → nav z-20. Preserve the source credit in the footer. Respect `prefers-reduced-motion`; ARIA label on nav and icon-only buttons; only transform/opacity/filter animate. Never apply `overflow-x: hidden` to `html`/`body` or a root wrapper — it creates a scroll container and silently breaks `position: sticky`; contain any horizontal bleed with `overflow-x: clip` on the overflowing section instead.

@@ -61,4 +61,4 @@ RESPONSIVE
 KEY DEPENDENCIES
 `react@^18` `react-dom@^18` `typescript@^5` `vite@^5` `tailwindcss@^3` `lucide-react@latest`
 
-CONSTRAINTS: fictional product and sample prices; exactly two accents; no claim photo shows products, video, gradients, blobs, autoplay, or weight/price animation. Missing add-on images use designed fallbacks. Only transform/opacity animate; labeled switches/details, reduced motion, source and credit visible.
+CONSTRAINTS: fictional product and sample prices; exactly two accents; no claim photo shows products, video, gradients, blobs, autoplay, or weight/price animation. Missing add-on images use designed fallbacks. Only transform/opacity animate; labeled switches/details, reduced motion, source and credit visible. Never apply `overflow-x: hidden` to `html`/`body` or a root wrapper — it creates a scroll container and silently breaks `position: sticky`; contain any horizontal bleed with `overflow-x: clip` on the overflowing section instead.

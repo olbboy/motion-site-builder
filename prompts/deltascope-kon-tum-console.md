@@ -63,4 +63,4 @@ RESPONSIVE
 KEY DEPENDENCIES
 `react@^18` `react-dom@^18` `typescript@^5` `vite@^5` `tailwindcss@^3` `lucide-react@latest` `recharts@^2` `@radix-ui/react-dropdown-menu@^2`
 
-CONSTRAINTS: product UI, interactions ≤250ms, no video, gradients, glassmorphism, decorative motion, or false geospatial accuracy. Demo data must be labeled. Only transform/opacity animate; paint-only color transitions ≤150ms allowed. Full keyboard access, chart table fallback, reduced motion, photo source and credit in an About panel.
+CONSTRAINTS: product UI, interactions ≤250ms, no video, gradients, glassmorphism, decorative motion, or false geospatial accuracy. Demo data must be labeled. Only transform/opacity animate; paint-only color transitions ≤150ms allowed. Full keyboard access, chart table fallback, reduced motion, photo source and credit in an About panel. Never apply `overflow-x: hidden` to `html`/`body` or a root wrapper — it creates a scroll container and silently breaks `position: sticky`; contain any horizontal bleed with `overflow-x: clip` on the overflowing section instead.

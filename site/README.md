@@ -1,6 +1,6 @@
 # Landing Page (`site/`)
 
-The repo's own marketing page — dogfooded from [prompts/motion-site-builder-landing.md](../prompts/motion-site-builder-landing.md) via the skill's code mode. It presents the full build/review/improve suite, five design profiles, 54 prompts, 17 lint rules, and eight MCP tools. Every source file scores 100/A+ on the bundled motion linter.
+The repo's own marketing page — dogfooded from [prompts/motion-site-builder-landing.md](../prompts/motion-site-builder-landing.md) via the skill's code mode. It presents the full build/review/improve suite, five design profiles, 54 prompts, 20 lint rules, and eight MCP tools. Every source file scores 100/A+ on the bundled motion linter.
 
 One deliberate adaptation from the prompt: the `{YOUR_VIDEO_URL}` background is implemented as a procedural canvas aurora ([src/components/aurora-background.tsx](src/components/aurora-background.tsx)) — owned media, zero licensing risk, works offline, honors `prefers-reduced-motion`.
 

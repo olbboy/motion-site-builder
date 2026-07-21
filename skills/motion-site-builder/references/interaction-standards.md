@@ -6,7 +6,7 @@ Distilled from Emil Kowalski's design-engineering philosophy ([emilkowal.ski](ht
 
 > **Scope discipline — read first.** These rules govern **interactive elements**: things the user presses, hovers, opens, drags. They do **NOT** govern the hero entrance or scroll storytelling. A marketing hero is a *first-time / rare* moment (see the frequency table) and may legitimately run 0.5–1.2 s with expo-out — that is motion-site's macro DNA, and it stays. Do not apply "UI < 300 ms" or "when unsure, delete it" to hero entrances.
 
-The lint rules **M13–M17** enforce the mechanically-checkable subset of this document; the rest is judgment the builder/reviewer applies.
+The lint rules **M13–M18** enforce the mechanically-checkable subset of this document; the rest is judgment the builder/reviewer applies.
 
 ---
 
@@ -76,6 +76,7 @@ CSS **transitions** retarget from the current value mid-flight; **`@keyframes`**
 
 - Entry without JS: `@starting-style` (legacy fallback: `data-mounted` set in `useEffect`).
 - **`translateY(100%)`** moves an element by its own height regardless of size — how toasts/drawers hide themselves. Prefer over hardcoded px.
+- **Every entrance needs a paired exit.** In React, a conditionally-rendered animated element (`{open && <Menu/>}`) unmounts instantly unless wrapped in `AnimatePresence` (with a stable `key`) or driven by CSS `transition` + a mounted flag / `@starting-style` with `transition-behavior: allow-discrete`. Elements that animate in but *pop* out are a finding. Exits run 30–50% shorter than their entrance and mirror the path.
 
 ```css
 .toast {
@@ -95,6 +96,25 @@ Use for drag with momentum, "alive" elements, interruptible gestures, decorative
 ```
 
 Keep bounce subtle (0.1–0.3); default UI to no bounce (critically damped). Reserve visible bounce for drag-to-dismiss and playful moments. Requires `framer-motion`/`motion` (already whitelisted) — do **not** add GSAP or other libs for this.
+
+**Spring presets** (stiffness / damping / mass) when you need physics params instead of duration+bounce:
+
+| Feel | stiffness | damping | mass | Use |
+| --- | --- | --- | --- | --- |
+| Snappy UI (default) | 400 | 30 | 1 | buttons, toggles, menus — settles fast, no visible bounce |
+| Gentle | 120 | 14 | 1 | large panels, sheets |
+| Bouncy | 600 | 15 | 1 | playful-profile pops, drag-release |
+| Heavy | 200 | 20 | 2 | big media/cards that should feel massive |
+
+**Overshoot budget by context** — how far past the target a spring may travel:
+
+| Context | Overshoot |
+| --- | --- |
+| Error / destructive | **0%** — never bounce bad news |
+| Premium / cinematic surfaces | 0% (critically damped is the luxury signal) |
+| Everyday feedback (toggle, check) | 2–5% |
+| Success confirmation | 5–10% |
+| Celebration / playful rare moments | 15–25% (past ~25% reads as broken, even in playful) |
 
 ## 7. Asymmetric timing
 
@@ -116,6 +136,7 @@ Slow where the user is deciding, fast where the system responds. Symmetric timin
 
 - **Reduced motion = gentler, not zero.** Keep opacity/color that aids comprehension; drop movement. (motion-site's global boilerplate already collapses durations.)
 - **Gate raw-CSS `:hover` motion (M17)** behind `@media (hover: hover) and (pointer: fine)` — touch fires a false hover on tap. (Tailwind `hover:` utilities are excluded from the lint rule; still prefer press feedback over hover motion on touch-first UIs.)
+- **The focus ring appears instantly (M18).** `:focus-visible` is the keyboard user's only location cue — never transition `outline`/`box-shadow` in the focus rule **or its base selector**. In Tailwind, don't pair `transition`/`transition-all`/`transition-shadow` with `focus-visible:ring-*`; use property-specific transforms/colors instead.
 
 ```css
 @media (hover: hover) and (pointer: fine) {
@@ -151,5 +172,6 @@ Slow where the user is deciding, fast where the system responds. Symmetric timin
 | M15 | popover/dropdown/tooltip origin-aware (modals exempt) | §4 |
 | M16 | press feedback on pressable / hover-motion elements | §4 |
 | M17 | raw-CSS `:hover` motion gated behind `@media (hover: hover)` | §9 |
+| M18 | focus ring appears instantly (no transition on the ring) | §9 |
 
 Everything else here is builder/reviewer judgment. All flags/values live in `config/motion-tokens.json` → `interaction`.

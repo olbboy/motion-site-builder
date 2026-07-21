@@ -3,7 +3,7 @@ import { useInViewOnce } from './reveal'
 
 const STATS = [
   { value: 5, label: 'design profiles' },
-  { value: 17, label: 'motion lint rules' },
+  { value: 20, label: 'motion lint rules' },
   { value: 54, label: 'curated prompts' },
   { value: 8, label: 'MCP tools' },
 ]

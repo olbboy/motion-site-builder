@@ -1,8 +1,8 @@
 # Motion Audit Playbook
 
-The eight audit categories, what to hunt for in each, and where the exact target values live. **Values are delegated, not duplicated** — pull curves/durations/spring configs from `motion_get_tokens` and `motion-site-builder/references/interaction-standards.md` (micro) / `motion-design-dna.md` (macro). Never approximate a value that appears there — copy it.
+The eight audit categories, what to hunt for in each, and where the exact target values live. **Values are delegated, not duplicated** — pull curves/durations/spring configs from `motion_get_tokens` and `../motion-site-builder/references/interaction-standards.md` (micro) / `../motion-site-builder/references/motion-design-dna.md` (macro). Never approximate a value that appears there — copy it.
 
-The linter (`motion_validate_file`, rules M01–M17) covers the mechanical subset; run it first. This playbook is for the judgment the linter can't make.
+The linter (`motion_validate_file`, rules M01–M20) covers the mechanical subset; run it first. This playbook is for the judgment the linter can't make.
 
 ## 1. Purpose & frequency
 
@@ -49,6 +49,10 @@ Hunt for: `@keyframes` on toasts/toggles/rapidly-triggered UI, gesture handlers 
 
 Hunt for: `transition: all`, animated layout props, Framer shorthand on busy pages, `setProperty('--x', …)` driving child transforms, `<video>` missing attrs/poster, missing z-index on a video stack.
 
+**If the codebase uses WebGL/Three.js** (`<canvas>`, `THREE.*`, `@react-three/fiber`) — the suite never *introduces* WebGL, but audits it where it exists: check `dispose()` on geometries/materials/textures + `renderer.dispose()` when the component/route unmounts (memory leaks), `setPixelRatio(Math.min(devicePixelRatio, 2))`, the render loop pausing when the tab is hidden and under `prefers-reduced-motion` (stop camera parallax/particles — most Three.js code ships without this), and a static-image fallback on WebGL context loss.
+
+**If the codebase uses GSAP** — audit with the checklist in `../motion-site-builder/references/gsap-interop.md`: missing `useGSAP`/`ctx.revert()` cleanup, ScrollTrigger on nested tweens, `scrub`+`toggleActions` together, non-`none` ease on `containerAnimation`, `markers: true` in production, no `gsap.matchMedia()` reduced-motion branch.
+
 ## 6. Accessibility
 
 Reduced motion = fewer and gentler, **not zero** — keep opacity/color that aids comprehension, drop movement (M01). Gate raw-CSS `:hover` motion behind `@media (hover: hover) and (pointer: fine)` (M17) — touch fires false hovers.
@@ -63,6 +67,8 @@ Hunt for: movement with no `prefers-reduced-motion` handling, ungated `:hover` m
 - Everything-at-once group entrances where a **30–80ms stagger** belongs. A crossfade that double-exposes can be masked with `filter: blur(2px)`.
 
 Hunt for: duplicated near-identical easings/durations, one bouncy component in a quiet site, > 1 accent hue, list/grid entrances with no stagger, crossfades that visibly double-expose.
+
+**Drift inventory (cross-file, what a per-file lint can't see):** run `python3 skills/motion-site-builder/scripts/audit_consistency.py <src-dir>` from this repository, or resolve the script from the installed builder skill root. It inventories literal durations, easing/cubic-bezier values, and spring configs across the codebase with counts and locations. More than ~8 distinct duration values or ~5 distinct off-token easing curves is a consolidation lead; entrances that pop out with no exit (conditional renders without `AnimatePresence`/`@starting-style`) surface here too. Name findings with the troubleshooting vocabulary (`../motion-site-builder/references/troubleshooting.md`): "looks robotic", "feels cheap", "too distracting", "no personality".
 
 ## 8. Missed opportunities
 

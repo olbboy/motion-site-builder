@@ -1,6 +1,6 @@
 {
   "meta": {
-    "source_dir": "/Users/leo/Workspace/Personal/motion-site/prompts",
+    "source_dir": "prompts",
     "count": 54,
     "generator": "build_index.py",
     "note": "regex-derived tags are lower bounds; re-run after adding prompts"
@@ -11,7 +11,7 @@
       "name": "Afterglow Camp",
       "category": "Curated sunset kit · ecommerce",
       "archetype": "minimal-hero",
-      "size_chars": 4127,
+      "size_chars": 4356,
       "stack": [
         "react",
         "tailwind",
@@ -106,7 +106,7 @@
       "name": "Arcadia Goods ⭐",
       "category": "Storefront",
       "archetype": "full-landing",
-      "size_chars": 8236,
+      "size_chars": 8465,
       "stack": [
         "react",
         "tailwind",
@@ -141,7 +141,7 @@
       "name": "Atlas Fleet Ops",
       "category": "Logistics ops dashboard",
       "archetype": "minimal-hero",
-      "size_chars": 9327,
+      "size_chars": 9556,
       "stack": [
         "react",
         "tailwind",
@@ -174,7 +174,7 @@
       "name": "Aurelia",
       "category": "Haute-horlogerie watchmaker (full landing)",
       "archetype": "full-landing",
-      "size_chars": 13651,
+      "size_chars": 13880,
       "stack": [
         "react",
         "tailwind",
@@ -240,7 +240,7 @@
       "name": "Beacon Feature Flags",
       "category": "Flag management console",
       "archetype": "full-landing",
-      "size_chars": 9331,
+      "size_chars": 9560,
       "stack": [
         "react",
         "tailwind",
@@ -369,7 +369,7 @@
       "name": "DeltaScope",
       "category": "Agricultural operations dashboard · product-ui",
       "archetype": "minimal-hero",
-      "size_chars": 5048,
+      "size_chars": 5277,
       "stack": [
         "react",
         "tailwind",
@@ -464,7 +464,7 @@
       "name": "Fjellrev",
       "category": "Alpine shell product page",
       "archetype": "full-landing",
-      "size_chars": 9881,
+      "size_chars": 10110,
       "stack": [
         "react",
         "tailwind",
@@ -497,7 +497,7 @@
       "name": "Glyphery",
       "category": "Digital type foundry shop",
       "archetype": "full-landing",
-      "size_chars": 9548,
+      "size_chars": 9777,
       "stack": [
         "react",
         "tailwind",
@@ -531,7 +531,7 @@
       "name": "Grain & Gram",
       "category": "Coffee shop + subscription",
       "archetype": "full-landing",
-      "size_chars": 10853,
+      "size_chars": 11082,
       "stack": [
         "react",
         "tailwind",
@@ -658,7 +658,7 @@
       "name": "Hương Afterglow",
       "category": "Place and memory journal · editorial",
       "archetype": "minimal-hero",
-      "size_chars": 3945,
+      "size_chars": 4174,
       "stack": [
         "react",
         "tailwind",
@@ -690,7 +690,7 @@
       "name": "Karst & Canvas",
       "category": "Transformed graphic poster shop · ecommerce",
       "archetype": "minimal-hero",
-      "size_chars": 5700,
+      "size_chars": 5929,
       "stack": [
         "react",
         "tailwind",
@@ -753,7 +753,7 @@
       "name": "Kinh Tuyến",
       "category": "Regenerative landscape studio · cinematic",
       "archetype": "minimal-hero",
-      "size_chars": 4854,
+      "size_chars": 5083,
       "stack": [
         "react",
         "tailwind",
@@ -782,7 +782,7 @@
       "name": "Lan Hạ Stillwater",
       "category": "Small-boat expedition · cinematic",
       "archetype": "minimal-hero",
-      "size_chars": 4367,
+      "size_chars": 4596,
       "stack": [
         "react",
         "tailwind",
@@ -840,7 +840,7 @@
       "name": "Ledgerline Changelog ⭐",
       "category": "Docs / changelog",
       "archetype": "minimal-hero",
-      "size_chars": 6361,
+      "size_chars": 6590,
       "stack": [
         "react",
         "tailwind",
@@ -898,7 +898,7 @@
       "name": "Loam & Kiln",
       "category": "Ceramics storefront",
       "archetype": "full-landing",
-      "size_chars": 8846,
+      "size_chars": 9075,
       "stack": [
         "react",
         "tailwind",
@@ -932,7 +932,7 @@
       "name": "Maison Ondes ⭐",
       "category": "Product page",
       "archetype": "full-landing",
-      "size_chars": 9569,
+      "size_chars": 9798,
       "stack": [
         "react",
         "tailwind",
@@ -965,7 +965,7 @@
       "name": "Meridian Longread ⭐",
       "category": "Magazine article",
       "archetype": "minimal-hero",
-      "size_chars": 7183,
+      "size_chars": 7412,
       "stack": [
         "react",
         "tailwind",
@@ -1052,7 +1052,7 @@
       "name": "Motion Site Builder (official dogfood)",
       "category": "Product landing",
       "archetype": "full-landing",
-      "size_chars": 16020,
+      "size_chars": 16249,
       "stack": [
         "react",
         "tailwind",
@@ -1178,7 +1178,7 @@
       "name": "Phan Thiết Coast",
       "category": "Travel apparel capsule · ecommerce",
       "archetype": "minimal-hero",
-      "size_chars": 4533,
+      "size_chars": 4762,
       "stack": [
         "react",
         "tailwind",
@@ -1243,7 +1243,7 @@
       "name": "Praxis Docs",
       "category": "Developer documentation",
       "archetype": "full-landing",
-      "size_chars": 9160,
+      "size_chars": 9389,
       "stack": [
         "react",
         "tailwind",
@@ -1272,7 +1272,7 @@
       "name": "PulseGrid Analytics ⭐",
       "category": "Dashboard",
       "archetype": "minimal-hero",
-      "size_chars": 8398,
+      "size_chars": 8627,
       "stack": [
         "react",
         "tailwind",
@@ -1338,7 +1338,7 @@
       "name": "Relay Incident Console",
       "category": "On-call / incident response",
       "archetype": "minimal-hero",
-      "size_chars": 9928,
+      "size_chars": 10157,
       "stack": [
         "react",
         "tailwind",
@@ -1492,7 +1492,7 @@
       "name": "Substrata Engineering Blog",
       "category": "Blog index",
       "archetype": "minimal-hero",
-      "size_chars": 7726,
+      "size_chars": 7955,
       "stack": [
         "react",
         "tailwind",
@@ -1553,7 +1553,7 @@
       "name": "Trạm Mùa",
       "category": "Seasonal field journal · editorial",
       "archetype": "minimal-hero",
-      "size_chars": 4649,
+      "size_chars": 4878,
       "stack": [
         "react",
         "tailwind",
@@ -1675,7 +1675,7 @@
       "name": "Waypoints",
       "category": "Travel photo essay",
       "archetype": "full-landing",
-      "size_chars": 9390,
+      "size_chars": 9619,
       "stack": [
         "react",
         "tailwind",

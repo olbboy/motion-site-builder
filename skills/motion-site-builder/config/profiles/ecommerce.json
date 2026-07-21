@@ -58,6 +58,33 @@
     "note": "product media at the base, sale/badge over media, cart drawer on top"
   },
   "radius": { "interactive": "rounded-lg", "panel": "rounded-xl", "card": "rounded-xl" },
+  "aesthetic": {
+    "mood": ["polished", "desirable", "efficient"],
+    "genre": "retail storefront",
+    "personality": ["helpful", "confident", "unobtrusive"],
+    "density": "comfortable",
+    "ornamentation": "none"
+  },
+  "imagery": {
+    "photo_treatment": "consistent product photography on neutral grounds; lifestyle imagery for campaigns",
+    "illustration_style": "none",
+    "image_shape": "rounded-card",
+    "pattern_usage": "none"
+  },
+  "elevation": {
+    "shadow_style": "soft-diffused",
+    "levels": {
+      "low": "0 1px 3px rgb(0 0 0 / 0.06)",
+      "medium": "0 8px 24px rgb(0 0 0 / 0.10)"
+    },
+    "note": "card hover-lift pairs with one soft shadow step; heavy drop shadows cheapen product imagery"
+  },
+  "voice": {
+    "tone": "clear, benefit-led",
+    "formality": "professional-friendly",
+    "cta_style": "direct imperative",
+    "error_tone": "reassuring and actionable (stock, payment, shipping)"
+  },
   "dependencies": {
     "allowed": [
       "react", "react-dom", "typescript", "vite", "@vitejs/plugin-react",
@@ -84,6 +111,7 @@
   },
   "lint": {
     "weights": { "error": 15, "warning": 5, "info": 1 },
+    "z_index_escape_threshold": 999,
     "disabled_rules": [],
     "severity_overrides": {},
     "note": "brand + neutral via max_accent_hues=2"

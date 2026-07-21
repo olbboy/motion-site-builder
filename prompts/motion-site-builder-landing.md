@@ -1,6 +1,6 @@
 # Motion Site Builder — Official Landing
 
-Build a single-page marketing landing page for "Motion Site Builder" — an open-source suite that builds new motion UI, strictly reviews changes, and turns existing-app audits into executable improvement plans across **five design languages** (cinematic, product-ui, editorial, playful, ecommerce), backed by 54 curated prompts, a 17-rule motion linter, 8 MCP tools, and 3 agent skills. The page itself is **cinematic** profile; its hero embeds a live five-language stage as the product surface. Use React + Vite + Tailwind CSS + TypeScript + framer-motion + lucide-react. Default Tailwind config, no other UI libraries.
+Build a single-page marketing landing page for "Motion Site Builder" — an open-source suite that builds new motion UI, strictly reviews changes, and turns existing-app audits into executable improvement plans across **five design languages** (cinematic, product-ui, editorial, playful, ecommerce), backed by 54 curated prompts, a 20-rule motion linter, 8 MCP tools, and 3 agent skills. The page itself is **cinematic** profile; its hero embeds a live five-language stage as the product surface. Use React + Vite + Tailwind CSS + TypeScript + framer-motion + lucide-react. Default Tailwind config, no other UI libraries.
 
 FONTS
 - Display: Instrument Serif (Google Fonts, regular + italic) — all headings, via a `.font-display` utility
@@ -112,7 +112,7 @@ NAVBAR (sticky top-0 z-30, px-6 pt-5)
 HERO + STAGE (z-10, flex-col items-center, pt-14 md:pt-20 pb-24, text-center — the stage IS the product surface, peeking above the fold)
 - Badge (`.animate-fade-up`): liquid-glass pill — accent 6px dot + eyebrow-styled "Open source · MIT · 5 design languages" in white/60
 - H1 (delay-1): "Motion UI that looks / *designed*, not generated." — font-display text-glow, text-5xl md:text-8xl, leading-[0.95], tracking-tight; "designed" = `<em class="italic text-accent">`
-- Sub (delay-2, max-w-lg, white/70, `[text-wrap:balance]`): "Build new motion UI, review a change, or turn an existing app into executable improvement plans — all grounded by one 17-rule linter."
+- Sub (delay-2, max-w-lg, white/70, `[text-wrap:balance]`): "Build new motion UI, review a change, or turn an existing app into executable improvement plans — all grounded by one 20-rule linter."
 - CTAs (delay-3): primary "Explore the profiles" (bg-white text-black rounded-full px-8 py-3.5, hover scale 1.03, active 0.97) + quiet text link "View on GitHub →" (white/60 → white/90, color only) — ONE solid button in the hero
 - STAGE (in a `Reveal delay={160}`, mt-16 md:mt-20, `id="profiles"` scroll-mt-28):
   - Eyebrow centered: "01 · The range — one engine, five design languages"
@@ -128,13 +128,13 @@ HERO + STAGE (z-10, flex-col items-center, pt-14 md:pt-20 pb-24, text-center —
   - Caption row under stage: `{key} — {signature}` + tempo chip (e.g. "cinematic — Video-first · glass · serif · one accent" / "0.5–1.2s · expo-out")
 
 STATS STRIP (border-t border-white/5, py-16; grid 2→4 cols, md:divide-x divide-white/10)
-- 5 design profiles · 17 motion lint rules · 54 curated prompts · 8 MCP tools
+- 5 design profiles · 20 motion lint rules · 54 curated prompts · 8 MCP tools
 - Numbers: font-display text-6xl md:text-7xl tracking-tight, COUNT UP 0→target over 900ms quart-out once the strip enters view (`minWidth` in `ch` so nothing shifts; reduced-motion jumps straight to the value); labels text-xs uppercase tracking-[0.18em] white/50
 
 HOW IT WORKS (`id="how"`, max-w-6xl, py-28 — LEFT-aligned editorial rail, not cards)
 - Eyebrow "02 · The method" → serif H2 "Pick a profile. Plan. Build. Validate." (text-4xl md:text-5xl) → lede white/60 "Taste becomes a system — a deterministic pipeline, not a lucky prompt."
 - 4 rows (max-w-3xl), each `grid-cols-[84px_1fr] md:grid-cols-[128px_1fr]`, border-t white/10 (last also border-b), py-9: ghost serif numeral 01–04 (text-6xl md:text-8xl, white/25, `group-hover:text-accent` 300ms color) + title (text-xl md:text-2xl font-medium) + body white/60
-- Copy: Profile (pick 1 of 5 languages; linter and tools then enforce that taste) · Plan (archetype, palette, scroll story Hook → Proof → Detail → CTA) · Build (adapt the nearest of 54 reference prompts, measured profile-aware primitives) · Validate (17-rule linter; reduced-motion, GPU-only, ARIA are errors)
+- Copy: Profile (pick 1 of 5 languages; linter and tools then enforce that taste) · Plan (archetype, palette, scroll story Hook → Proof → Detail → CTA) · Build (adapt the nearest of 54 reference prompts, measured profile-aware primitives) · Validate (20-rule linter; reduced-motion, GPU-only, ARIA are errors)
 - Rows reveal with delay index·80ms
 
 SKILLS SUITE (`id="skills"`, py-28, LEFT-aligned)
@@ -155,7 +155,7 @@ FINAL CTA + FOOTER (pt-32, centered, in one `Reveal`)
 - Mono lint line: `$ motion_validate site/ → score 100 · grade A+` (white/40, result in accent)
 - Serif H2 text-4xl md:text-6xl: "Five design languages. / *One* paste away."
 - CTA — the page's accent climax: "Star on GitHub" `bg-accent rounded-full px-10 py-4 text-lg text-white shadow-[0_0_0_1px_rgba(115,66,226,0.4),0_16px_48px_rgba(115,66,226,0.35)]`, hover scale 1.03, active 0.97, Github icon
-- Fine print white/50: "MIT licensed · Built with its own skill · 17-rule linter · cubic-bezier(0.16, 1, 0.3, 1)"
+- Fine print white/50: "MIT licensed · Built with its own skill · 20-rule linter · cubic-bezier(0.16, 1, 0.3, 1)"
 - Footer: border-t white/[0.06], pt-10 pb-12, flex justify-between text-[13px] — "© Motion Site Builder — dogfooded by its own linter" + links GitHub / Prompt library / Design profiles / MIT license (white/60 → white/90)
 
 ANIMATIONS (complete inventory)
@@ -173,4 +173,4 @@ RESPONSIVE
 - Mobile: H1 text-5xl; tab row wraps `grid-cols-2 sm:grid-cols-3`; stage h-[360px]; stats 2-col; method rail 84px numeral column; skills/tools stack; marquee text-2xl; no horizontal scroll anywhere
 - The sticky pill nav persists at every width; hero stage peeks above the fold on ≥900px viewports
 
-CONSTRAINTS: cinematic minimalism with ONE violet accent on the shell — the stage vignettes are quoted foreign languages (Tailwind palette utilities, no raw hex), everything else is white tiers + accent. Only animate transform/opacity/filter (paint-only exceptions: color/background-color on hovers ≤300ms, box-shadow on the two accent CTAs). Easing only from {cubic-bezier(0.16,1,0.3,1) · cubic-bezier(0.22,1,0.36,1) · springs in vignettes · linear for scrubber/marquee/progress}; never ease-in; no `transition: all`; no entrance below scale 0.5. The backdrop canvas is the only decorative layer — no DOM gradient washes or blobs over it. Respect `prefers-reduced-motion` everywhere (static canvas frame, no autoplay, no loops, instant reveals). ARIA: tablist/tab/tabpanel with arrow keys on the stage, `aria-hidden` on decor/marquee/inactive vignettes, labels on icon-only links, `role="status"` where async feedback appears. A deep link to any `#section` must land on fully visible content.
+CONSTRAINTS: cinematic minimalism with ONE violet accent on the shell — the stage vignettes are quoted foreign languages (Tailwind palette utilities, no raw hex), everything else is white tiers + accent. Only animate transform/opacity/filter (paint-only exceptions: color/background-color on hovers ≤300ms, box-shadow on the two accent CTAs). Easing only from {cubic-bezier(0.16,1,0.3,1) · cubic-bezier(0.22,1,0.36,1) · springs in vignettes · linear for scrubber/marquee/progress}; never ease-in; no `transition: all`; no entrance below scale 0.5. The backdrop canvas is the only decorative layer — no DOM gradient washes or blobs over it. Respect `prefers-reduced-motion` everywhere (static canvas frame, no autoplay, no loops, instant reveals). ARIA: tablist/tab/tabpanel with arrow keys on the stage, `aria-hidden` on decor/marquee/inactive vignettes, labels on icon-only links, `role="status"` where async feedback appears. A deep link to any `#section` must land on fully visible content. Never apply `overflow-x: hidden` to `html`/`body` or a root wrapper — it creates a scroll container and silently breaks `position: sticky`; contain any horizontal bleed with `overflow-x: clip` on the overflowing section instead.

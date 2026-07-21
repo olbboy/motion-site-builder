@@ -6,13 +6,13 @@
 
 **Design, review, and improve motion-driven interfaces with AI.**
 
-Generate new sites or refine existing UI through profile-aware building, strict motion review, whole-codebase audits, executable improvement plans, and a deterministic 17-rule linter.
+Generate new sites or refine existing UI through profile-aware building, strict motion review, whole-codebase audits, executable improvement plans, and a deterministic 20-rule linter.
 
 [![CI](https://github.com/olbboy/motion-site-builder/actions/workflows/ci.yml/badge.svg)](https://github.com/olbboy/motion-site-builder/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/olbboy/motion-site-builder?color=7342e2)](https://github.com/olbboy/motion-site-builder/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Prompts](https://img.shields.io/badge/prompts-54%20original-8A2BE2)](prompts/README.md)
-[![Lint Rules](https://img.shields.io/badge/motion%20lint%20rules-17-success)](skills/motion-site-builder/scripts/lint_motion.py)
+[![Lint Rules](https://img.shields.io/badge/motion%20lint%20rules-20-success)](skills/motion-site-builder/scripts/lint_motion.py)
 [![GitHub Stars](https://img.shields.io/github/stars/olbboy/motion-site-builder?style=flat&logo=github&label=Stars&color=7342e2)](https://github.com/olbboy/motion-site-builder/stargazers)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
@@ -35,7 +35,7 @@ Generate new sites or refine existing UI through profile-aware building, strict 
 | **Improve an existing app** | A codebase that feels sluggish, generic, or inconsistent | Prioritized audit → self-contained plans → optional `execute` → reviewed implementation |
 | **Validate and tune** | Existing CSS/JSX/TSX/HTML or an in-progress design decision | Score/grade plus exact tokens, easing, duration, pattern, and reusable primitives |
 
-The suite is deliberately split by responsibility: `motion-site-builder` builds, `review-motion` judges a change, and `improve-motion` surveys a codebase and plans the highest-leverage fixes. They share the same profile configs, 17-rule linter, and motion standards.
+The suite is deliberately split by responsibility: `motion-site-builder` builds, `review-motion` judges a change, and `improve-motion` surveys a codebase and plans the highest-leverage fixes. They share the same profile configs, 20-rule linter, and motion standards.
 
 ## ✨ What's Inside
 
@@ -43,7 +43,7 @@ The suite is deliberately split by responsibility: `motion-site-builder` builds,
 |---|---|
 | 🎬 **[Prompt Library](prompts/README.md)** | 54 original prompts (cinematic heroes, dashboards, docs, storefronts, campaigns) ready to paste into Bolt, Lovable, v0, or Cursor — including [our own landing page](prompts/motion-site-builder-landing.md), two 100/A+ exemplars per non-cinematic profile, and a 20-concept Vietnam landscape collection with Pexels source pages and local-download targets. No brand replicas or hotlinked third-party assets. |
 | 🤖 **Agent Skills (×3)** | **[motion-site-builder](skills/motion-site-builder/SKILL.md)**: 15-step Plan → Build → Validate workflow. **[review-motion](skills/review-motion/SKILL.md)**: mechanical lint + senior judgment → Before/After + Block/Approve. **[improve-motion](skills/improve-motion/SKILL.md)**: recon → 8-category audit → prioritized, executable plans → `execute` / `reconcile`. |
-| ✅ **[Motion Linter](skills/motion-site-builder/scripts/lint_motion.py)** | Run it on generated or existing code. 17 profile-aware rules catch missing reduced-motion, layout-property animation, easing drift, video hygiene, accent misuse, `ease-in` UI, `scale(0)`, wrong popover origin, missing press feedback, and ungated hover motion. Returns findings, score, and grade. |
+| ✅ **[Motion Linter](skills/motion-site-builder/scripts/lint_motion.py)** | Run it on generated or existing code. 20 profile-aware rules catch missing reduced-motion, layout-property animation, easing drift, video hygiene, accent misuse, `ease-in` UI, `scale(0)`, wrong popover origin, missing press feedback, ungated hover motion, animated focus rings, `overflow-x: hidden` root masking, and z-index escape hatches. Returns findings, score, and grade. |
 | 🔌 **[MCP Server](skills/motion-site-builder/scripts/server.py)** | 8 zero-dependency tools expose five profiles, full tokens, 24 verbatim primitives, profile-specific pattern suggestions, easing/duration rationale, corpus retrieval, and inline/file validation. |
 
 ## 🚀 Quick Start
@@ -56,7 +56,21 @@ The suite is deliberately split by responsibility: `motion-site-builder` builds,
 
 ### Path 2 — Install the full agent suite
 
-From the repository root, this is the Claude Code symlink setup:
+With the [skills CLI](https://github.com/vercel-labs/skills) (works for Claude Code, Cursor, Codex, and friends — re-run any time to update):
+
+```bash
+npx skills add olbboy/motion-site-builder --all
+# review-motion/improve-motion share the builder engine; install it alongside either method skill:
+npx skills add olbboy/motion-site-builder --skill motion-site-builder review-motion
+```
+
+In Claude Code you can also install via the plugin marketplace:
+
+```text
+/plugin marketplace add olbboy/motion-site-builder
+```
+
+Or, to hack on the skills themselves, clone and symlink (Claude Code shown):
 
 ```bash
 git clone https://github.com/olbboy/motion-site-builder
@@ -109,6 +123,7 @@ Changed diff          → Profile-aware lint + judgment          → Block / App
 - **Deterministic quality gate** — the linter scores every file 0–100; errors block, warnings advise.
 - **Judgment after lint** — review and audit add frequency, interruptibility, cohesion, and missed-opportunity analysis that regex cannot see.
 - **Plans before mutation** — whole-codebase improvement is scoped and reviewable before an executor touches source.
+- **Build accountability** — the builder scans an existing project before touching it, previews its picks before writing code, self-critiques on six axes before emitting, then stamps the output (`/* motion-site · … */`) and appends `.motion-site/log.json` so the next build must *differ* — repeat briefs diverge instead of converging on one template.
 
 ## 🎨 The Design DNA — five profiles
 
@@ -142,18 +157,21 @@ Full guidelines: [motion-design-dna.md](skills/motion-site-builder/references/mo
 
 ```
 prompts/                      # the library — one .md per prompt (all original)
+skills/llms.txt               # skill index (fast discovery for agents)
 skills/motion-site-builder/   # the engine (build)
   SKILL.md                    #   agent workflow (entry point)
-  references/                 #   design profiles, DNA, interaction standards, catalog
+  references/                 #   profiles & schema, DNA, interaction standards, choreography,
+                              #   modern-css motion, gsap interop, troubleshooting, catalog
   config/motion-tokens.json   #   cinematic taste (default profile)
   config/profiles/*.json      #   product-ui · editorial · playful · ecommerce
   data/prompt-index.json      #   generated corpus index
-  scripts/                    #   linter · index builder · MCP server (all zero-dep Python)
+  scripts/                    #   linter · consistency audit · index builder · MCP server (zero-dep Python)
 skills/review-motion/         # strict diff review (Before/After table + Block/Approve)
 skills/improve-motion/        # codebase audit → self-contained plans (SKILL + AUDIT + PLAN-TEMPLATE)
 site/                         # cinematic landing page — dogfooded from its own prompt
 examples/                     # profile dogfoods (e.g. product-ui-dashboard — 100/A+ under product-ui)
 docs/                         # getting started, prompt guidelines, architecture
+.claude-plugin/               # plugin-marketplace manifests; AGENTS.md + copilot-instructions cover other runtimes
 ```
 
 `review-motion` and `improve-motion` are *method* skills — they reuse the builder's linter, tokens, and standards rather than duplicating them.
@@ -163,7 +181,11 @@ docs/                         # getting started, prompt guidelines, architecture
 - [Getting Started](docs/getting-started.md) — build, review, improve, and standalone validation paths
 - [Prompt Guidelines](docs/prompt-guidelines.md) — how to write and submit a prompt
 - [Architecture](docs/architecture.md) — how the skill, linter, index, and MCP server fit together
-- [Interaction Standards](skills/motion-site-builder/references/interaction-standards.md) — exact micro-motion values and frequency rules
+- [Project Roadmap](docs/project-roadmap.md) — what's next (eval fixtures, variant mode, motion-DNA study)
+- [Interaction Standards](skills/motion-site-builder/references/interaction-standards.md) — exact micro-motion values, springs & overshoot budgets, frequency rules
+- [Choreography](skills/motion-site-builder/references/choreography.md) — composing multi-element motion: attention budget, staging, direction semantics
+- [Profile Schema](skills/motion-site-builder/references/profile-schema.md) — the profile JSON schema + deriving a custom profile from references
+- [Modern CSS Motion](skills/motion-site-builder/references/modern-css-motion.md) · [GSAP Interop](skills/motion-site-builder/references/gsap-interop.md) · [Troubleshooting Feel](skills/motion-site-builder/references/troubleshooting.md)
 - [Review Skill](skills/review-motion/SKILL.md) · [Improve Skill](skills/improve-motion/SKILL.md) — working with existing code
 - [Skill README](skills/motion-site-builder/README.md) — customize & extend the engine
 

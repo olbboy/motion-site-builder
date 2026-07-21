@@ -62,4 +62,4 @@ RESPONSIVE
 KEY DEPENDENCIES
 `react@^18` `react-dom@^18` `typescript@^5` `vite@^5` `tailwindcss@^3` `framer-motion@^11` `lucide-react@latest`
 
-CONSTRAINTS: only one cyan-tide accent; no video, blobs, radial gradients, carousel, autoplay, or invented travel claims. Only transform/opacity/filter animate. Respect reduced motion; explicit z-layer contract; nav, tablist, and icon buttons carry ARIA; retain photographer credit and source link.
+CONSTRAINTS: only one cyan-tide accent; no video, blobs, radial gradients, carousel, autoplay, or invented travel claims. Only transform/opacity/filter animate. Respect reduced motion; explicit z-layer contract; nav, tablist, and icon buttons carry ARIA; retain photographer credit and source link. Never apply `overflow-x: hidden` to `html`/`body` or a root wrapper — it creates a scroll container and silently breaks `position: sticky`; contain any horizontal bleed with `overflow-x: clip` on the overflowing section instead.

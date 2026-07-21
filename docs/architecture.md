@@ -14,7 +14,7 @@ How the pieces fit, and the design contracts that keep the project extensible.
                                 │ read           │ read
         ┌───────────────────────▼──┐      ┌──────▼──────────────────┐
  prompts/*.md ──► build_index.py   │      │  lint_motion.py         │
- (54 files)      └► data/          │      │  @rule registry M01–M17 │
+ (54 files)      └► data/          │      │  @rule registry M01–M20 │
                     prompt-index   │      │  score · grade · CLI    │
                     .json          │      └──────▲──────────────────┘
                         ▲          │             │ import
@@ -57,9 +57,11 @@ The linter, index builder, and MCP server run on stock Python 3.9+. The MCP serv
 
 ## Component Notes
 
-**Linter (`lint_motion.py`)** — Rules are functions registered via `@rule(id, default_severity)`. Each receives a pre-parsed `Source` (raw text + cheap derived properties) and the config; each returns finding dicts. Config can disable rules or override severities without code changes. `Score = 100 − 15·errors − 5·warnings − 1·infos` (weights configurable). `--self-test` runs two built-in fixtures: a bad one that must fire 16 rules (M01–M17 except the package.json-only M04), a good one that must score ≥ 90. Rules M01–M12 cover macro composition; M13–M17 cover interaction craft (see `references/interaction-standards.md`).
+**Linter (`lint_motion.py`)** — Rules are functions registered via `@rule(id, default_severity)`. Each receives a pre-parsed `Source` (raw text + cheap derived properties) and the config; each returns finding dicts. Config can disable rules or override severities without code changes. `Score = 100 − 15·errors − 5·warnings − 1·infos` (weights configurable). `--self-test` runs two built-in fixtures: a bad one that must fire 19 rules (M01–M20 except the package.json-only M04), a good one that must score ≥ 90. Rules M01–M12 cover macro composition; M13–M18 cover interaction craft; M19–M20 cover layout safety (see `references/interaction-standards.md`).
 
 **Index builder (`build_index.py`)** — Walks the prompts dir, merges metadata parsed from `prompts/README.md` tables with regex-derived signals. Archetype classification is heuristic (path, keywords, size) and can be corrected by editing `classify_archetype`.
+
+**Consistency audit (`audit_consistency.py`)** — The cross-file complement to the per-file linter: inventories literal duration, easing/cubic-bezier, and spring configs across a source tree (including comma-separated CSS lists), marks curves as token vs off-token against the active profile, flags value drift (>8 distinct durations / >5 off-token easings), and lists exit-risk files (conditional `<motion.*>` mounts with no exit mechanism — `AnimatePresence`, `@starting-style`, or a mounted flag). Report-only (exit 0 on any successful run; non-zero only on invalid usage) — `improve-motion` reads it during recon and turns drift into cohesion findings.
 
 **MCP server (`server.py`)** — Thin adapter exposing eight tools over the linter, profile configs, 24-section catalog, and 54-prompt index. `motion_get_template` extracts `## N. name` sections from `references/component-catalog.md` — keep those headers stable. `motion_find_reference` scores query terms against name/category/techniques/fonts/stack (weighted 3/2/1). `motion_easing_rationale` maps a motion intent (entrance/press/popover/toast/…) to the right easing + duration + why, reading curves and budgets from config so it stays re-skinnable.
 
